@@ -87,16 +87,6 @@ collections:
             name: additional_tags
             widget: text
             required: false
-  - name: pages-legal
-    label: Pages legal
-    identifier_field: title
-    extension: md
-    create: false
-    delete: false
-    slug: '{{slug}}'
-    editor: *ref_0
-    folder: cms/pages/legal
-    fields: *ref_1
   - name: pages-modules
     label: Pages modules
     identifier_field: title
@@ -107,39 +97,19 @@ collections:
     editor: *ref_0
     folder: cms/pages/modules
     fields: *ref_1
-  - name: pages-stripe
-    label: Pages stripe
+  - name: pages-services
+    label: Pages services
     identifier_field: title
     extension: md
     create: false
     delete: false
     slug: '{{slug}}'
     editor: *ref_0
-    folder: cms/pages/stripe
+    folder: cms/pages/services
     fields: *ref_1
-  - name: pages-fr
-    label: Pages fr
-    identifier_field: title
-    extension: md
-    create: false
-    delete: false
-    slug: '{{slug}}'
-    editor: *ref_0
-    folder: cms/pages/fr
-    fields: *ref_1
-  - name: pages-de
-    label: Pages de
-    identifier_field: title
-    extension: md
-    create: false
-    delete: false
-    slug: '{{slug}}'
-    editor: *ref_0
-    folder: cms/pages/de
-    fields: *ref_1
-  - name: testimonies
-    label: Testimonies
-    folder: cms/testimonies
+  - name: publications
+    label: Publications
+    folder: cms/publications
     create: true
     identifier_field: name
     extension: md
@@ -165,427 +135,35 @@ collections:
         label: Published On
         widget: datetime
         required: false
-      - hint: ''
-        name: f_portrait
-        label: Portrait
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
-      - hint: ''
-        name: f_testimony-text
-        label: Testimony
-        widget: string
-        required: false
-      - hint: ''
-        name: f_occupation
-        label: Occupation
-        widget: string
-        required: false
-      - hint: ''
-        name: f_company
-        label: Company
-        widget: string
-        required: false
-      - label: Tags
-        widget: hidden
-        name: tags
-        default: testimonies
-      - label: Layout
-        widget: hidden
-        name: layout
-        default: '[testimonies].html'
-      - label: Publish Date
-        name: date
-        widget: datetime
-      - *ref_2
-  - name: categories
-    label: Categories
-    folder: cms/categories
-    create: true
-    identifier_field: name
-    extension: md
-    slug: '{{slug}}'
-    fields:
-      - hint: ''
-        name: title
-        label: Name
-        widget: string
-        required: true
-      - hint: ''
-        name: created-on
-        label: Created On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: updated-on
-        label: Updated On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: published-on
-        label: Published On
-        widget: datetime
-        required: false
-      - hint: ''
+      - hint: Order at which the PDF will be listed
         name: f_order
         label: Order
         widget: number
         required: false
-      - hint: ''
-        name: f_color
-        label: Color
-        widget: color
-        required: false
-        enableAlpha: true
-        allowInput: true
-      - label: Tags
-        widget: hidden
-        name: tags
-        default: categories
-      - label: Layout
-        widget: hidden
-        name: layout
-        default: '[categories].html'
-      - label: Publish Date
-        name: date
-        widget: datetime
-      - *ref_2
-  - name: projects
-    label: Projects
-    folder: cms/projects
-    create: true
-    identifier_field: name
-    extension: md
-    slug: '{{slug}}'
-    fields:
-      - hint: ''
-        name: title
-        label: Name
-        widget: string
-        required: true
-      - hint: ''
-        name: created-on
-        label: Created On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: updated-on
-        label: Updated On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: published-on
-        label: Published On
-        widget: datetime
-        required: false
-      - label: Description
-        name: body
-        widget: markdown
-        required: false
-      - hint: Is the project highlighted on page load ?
-        name: f_highlight
-        label: Featured ?
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_order
-        label: Order
-        widget: number
-        required: false
-      - hint: ''
-        name: f_client
-        label: Client
+      - hint: Please, password protect the PDF directly within proton.
+        name: f_url-of-proton-hosted-pdf
+        label: URL of Proton hosted PDF
         widget: string
         required: false
-      - hint: Is the project displayed in the filtering system ?
-        name: f_on-display
-        label: Is on display
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_is-web
-        label: is Web
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_is-photography
-        label: Is photography
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_is-graphic-design
-        label: Is Graphic Design
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_has-big-image
-        label: Has big image
-        widget: boolean
-        required: false
-        default: false
-      - hint: Does the header has video URLs ?
-        name: f_hero-video
-        label: Has hero videos
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_has-gallery-images
-        label: Has gallery images
-        widget: boolean
-        required: false
-        default: false
-      - hint: ''
-        name: f_thumbnail
-        label: Thumbnail
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
-      - hint: Hero image as alternative to videos header
-        name: f_hero-image-static
-        label: Hero
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
-      - hint: Short summary of the project in one word
-        name: f_thumbnail-title
-        label: Thumbnail title
-        widget: string
-        required: false
-      - hint: website of the project, if it exists
-        name: f_website
-        label: Website URL
-        widget: string
-        required: false
-      - hint: ''
-        name: f_video-1
-        label: Video URL 1
-        widget: string
-        required: false
-      - hint: ''
-        name: f_video-thumnail-1
-        label: Video thumbnail 1
-        widget: string
-        required: false
-      - hint: ''
-        name: f_video-2
-        label: Video URL 2
-        widget: string
-        required: false
-      - hint: ''
-        name: f_video-thumbnail-2
-        label: Video thumbnail 2
-        widget: string
-        required: false
-      - hint: ''
-        name: f_video-3
-        label: Video URL 3
-        widget: string
-        required: false
-      - hint: ''
-        name: f_video-thumbnail-3
-        label: Video thumbnail 3
-        widget: string
-        required: false
-      - hint: ''
-        name: f_introduction
-        label: Introduction
+      - hint: About 1 or two sentences
+        name: f_short-descritpion-of-the-pdf
+        label: Short descritpion of the PDF
         widget: text
         required: false
-      - hint: ''
-        name: f_horizontal-line-1
-        label: Horizontal hashtags A
-        widget: string
+      - hint: if yes activate the switch
+        name: f_is-proton-password-protected
+        label: Is Proton password protected ?
+        widget: boolean
         required: false
-      - hint: ''
-        name: f_horizontal-line-2
-        label: Horizontal hashtags B
-        widget: string
-        required: false
-      - hint: 1920 x 1080px JPG optimized
-        name: f_big-image
-        label: Highlight
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
-      - hint: ''
-        name: f_gallery
-        label: Gallery
-        widget: list
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Image
-            widget: image
-            required: false
-            allow_multiple: false
-          - hint: Image Alt
-            name: alt
-            label: alt
-            widget: string
-            required: false
-      - hint: ''
-        name: f_category-ies
-        label: Category(ies)
-        widget: relation
-        required: false
-        collection: categories
-        value_field: cms/categories/{{slug}}.md
-        search_fields:
-          - slug
-          - name
-        display_fields:
-          - title
-        multiple: true
-      - hint: ''
-        name: f_similar-projects
-        label: Similar projects
-        widget: relation
-        required: false
-        collection: projects
-        value_field: cms/projects/{{slug}}.md
-        search_fields:
-          - slug
-          - name
-        display_fields:
-          - title
-        multiple: true
-      - hint: ''
-        name: f_testimony-2
-        label: Testimony
-        widget: relation
-        required: false
-        collection: testimonies
-        value_field: cms/testimonies/{{slug}}.md
-        search_fields:
-          - slug
-          - name
-        display_fields:
-          - title
-        multiple: false
-      - hint: ''
-        name: f_tag-1
-        label: 'Tag #1'
-        widget: string
-        required: false
-      - hint: ''
-        name: f_tag-2
-        label: 'Tag #2'
-        widget: string
-        required: false
-      - hint: ''
-        name: f_film-vimeo
-        label: Film (Vimeo)
-        widget: object
-        required: false
-        fields:
-          - hint: ''
-            name: url
-            label: Url
-            widget: string
-            required: false
+        default: false
       - label: Tags
         widget: hidden
         name: tags
-        default: projects
+        default: publications
       - label: Layout
         widget: hidden
         name: layout
-        default: '[projects].html'
-      - label: Publish Date
-        name: date
-        widget: datetime
-      - *ref_2
-  - name: legal_text
-    label: Legal Texts
-    folder: cms/legal-text
-    create: true
-    identifier_field: name
-    extension: md
-    slug: '{{slug}}'
-    fields:
-      - hint: ''
-        name: title
-        label: Name
-        widget: string
-        required: true
-      - hint: ''
-        name: created-on
-        label: Created On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: updated-on
-        label: Updated On
-        widget: datetime
-        required: false
-      - hint: ''
-        name: published-on
-        label: Published On
-        widget: datetime
-        required: false
-      - label: Text
-        name: body
-        widget: markdown
-        required: false
-      - label: Tags
-        widget: hidden
-        name: tags
-        default: legal-text
-      - label: Layout
-        widget: hidden
-        name: layout
-        default: '[legal-text].html'
+        default: '[publications].html'
       - label: Publish Date
         name: date
         widget: datetime
@@ -680,2496 +258,1310 @@ collections:
             name: title
             widget: hidden
             default: Texts
-          - hint: 'Original text: Work, key: 293b31'
+          - hint: "Original text: — \_Our mission, key: -278ecb7c"
             label: Text
-            name: 293b31
-            widget: string
-          - hint: 'Original text: new, key: 1a9a0'
-            label: Text
-            name: 1a9a0
-            widget: string
-          - hint: 'Original text: Services, key: 560f747e'
-            label: Text
-            name: 560f747e
-            widget: string
-          - hint: 'Original text: Book a call, key: 47d6ebb4'
-            label: Text
-            name: 47d6ebb4
-            widget: string
-          - hint: 'Original text: Free Audit, key: -185fced9'
-            label: Text
-            name: '-185fced9'
-            widget: string
-          - hint: 'Original text: The only Digital, key: -5827d70d'
-            label: Text
-            name: '-5827d70d'
-            widget: string
-          - hint: 'Original text: Designer & , key: 2dece1ef'
-            label: Text
-            name: 2dece1ef
-            widget: string
-          - hint: 'Original text: Developer, key: 72a307aa'
-            label: Text
-            name: 72a307aa
-            widget: string
-          - hint: 'Original text: you''ll ever need., key: 6323c48e'
-            label: Text
-            name: 6323c48e
-            widget: string
-          - hint: 'Original text: Anthony Salamin, key: 7b0de148'
-            label: Text
-            name: 7b0de148
-            widget: string
-          - hint: 'Original text: I , key: 8f7'
-            label: Text
-            name: 8f7
-            widget: string
-          - hint: 'Original text: push pixels around, key: 1c03b01a'
-            label: Text
-            name: 1c03b01a
+            name: '-278ecb7c'
             widget: string
           - hint: >-
-              Original text: Empowering online businesses with modern Web
-              Design, all-inclusive Web Development and unique Brand Identity
-              creation., key: -fc4212a
+              Original text:  is to empower our clients to achieve their
+              financial goals with confidence and peace of mind, key: -13e9a16f
             label: Text
-            name: '-fc4212a'
+            name: '-13e9a16f'
             widget: text
-          - hint: 'Original text: See portfolio, key: -1828f665'
+          - hint: 'Original text: 2020, key: 1774fc'
             label: Text
-            name: '-1828f665'
+            name: 1774fc
             widget: string
-          - hint: 'Original text: Let''s build your online presence, key: -790057fa'
+          - hint: 'Original text: Company Founded, key: cd026be'
             label: Text
-            name: '-790057fa'
-            widget: string
-          - hint: >-
-              Original text: Web design, Brand Identity, Startup, LP, ecommerce,
-              MVP, key: 359c97f3
-            label: Text
-            name: 359c97f3
+            name: cd026be
             widget: string
           - hint: >-
-              Original text: Affordable pricing meets impactful design – get
-              your website today., key: -2565d23d
+              Original text: Established in 2020 in Geneva, SilverArrow Wealth
+              Management has emerged as a pioneering firm, committed to
+              delivering tailored solutions that prioritize client success and
+              financial well-being., key: -cba01a8
             label: Text
-            name: '-2565d23d'
-            widget: string
-          - hint: >-
-              Original text: I help businesses shine online. Focus on what you
-              do best, let me handle the rest., key: -1faf18af
-            label: Text
-            name: '-1faf18af'
-            widget: string
+            name: '-cba01a8'
+            widget: text
           - hint: 'Original text: Get in touch, key: -5230a9d2'
             label: Text
             name: '-5230a9d2'
             widget: string
-          - hint: 'Original text: See all projects, key: -6675051a'
-            label: Text
-            name: '-6675051a'
-            widget: string
-          - hint: 'Original text: A — Z, key: 41af2ef'
-            label: Text
-            name: 41af2ef
-            widget: string
-          - hint: 'Original text: Featuring, key: 5e61d213'
-            label: Text
-            name: 5e61d213
-            widget: string
-          - hint: 'Original text: Highlight, key: 4ed7ac94'
-            label: Text
-            name: 4ed7ac94
-            widget: string
-          - hint: 'Original text: No items found., key: 3d503d2b'
-            label: Text
-            name: 3d503d2b
-            widget: string
-          - hint: 'Original text: Projects, key: -37ac8366'
-            label: Text
-            name: '-37ac8366'
-            widget: string
-          - hint: 'Original text: featuring, key: -19104dcd'
-            label: Text
-            name: '-19104dcd'
-            widget: string
-          - hint: 'Original text: Design, key: 79ceadde'
-            label: Text
-            name: 79ceadde
-            widget: string
-          - hint: 'Original text: FILM, key: 20ed84'
-            label: Text
-            name: 20ed84
-            widget: string
-          - hint: 'Original text: Photo, key: 4984e12'
-            label: Text
-            name: '4984e12'
-            widget: string
-          - hint: 'Original text: web, key: 1cb54'
-            label: Text
-            name: 1cb54
-            widget: string
-          - hint: 'Original text: Kind words from satisfied clients., key: -3329c859'
-            label: Text
-            name: '-3329c859'
-            widget: string
           - hint: >-
-              Original text: I am grateful for the opportunity to be working
-              with clients across a diverse range of industries., key: -75d665ef
+              Original text: "We believe in the power of transparency to build
+              strong, lasting relationships with our clients. That’s why we are
+              committed to providing clear, open communication every step of the
+              way", key: -2e56dec8
             label: Text
-            name: '-75d665ef'
+            name: '-2e56dec8'
             widget: text
-          - hint: 'Original text: 5/5, key: ccdb'
+          - hint: 'Original text: Jorge | Founder, key: -78e000aa'
             label: Text
-            name: ccdb
+            name: '-78e000aa'
+            widget: string
+          - hint: 'Original text: Our Mission, key: 3dba0078'
+            label: Text
+            name: 3dba0078
             widget: string
           - hint: >-
-              Original text: “ Anthony is an exceptionally universally gifted
-              creative. In his exploration of various means, methods, and tools,
-              he moves with admirable intuition. ”, key: 1313e921
+              Original text: By embodying our values of trustability,
+              transparency, flexibility, and bespoke solutions, we strive to be
+              your trusted partner in wealth management, guiding you every step
+              of the way on your journey to financial success., key: -55658e02
             label: Text
-            name: '1313e921'
+            name: '-55658e02'
             widget: text
-          - hint: 'Original text: Helge von Giese, key: -46d0ae29'
+          - hint: 'Original text: * , key: 536'
             label: Text
-            name: '-46d0ae29'
+            name: '536'
             widget: string
-          - hint: 'Original text: Journalist & Copywriter, key: -2590f691'
+          - hint: 'Original text: Expertise, key: 7f8f21f1'
             label: Text
-            name: '-2590f691'
-            widget: string
-          - hint: 'Original text: Zermatt Unplugged, key: 277cda5a'
-            label: Text
-            name: 277cda5a
+            name: 7f8f21f1
             widget: string
           - hint: >-
-              Original text: “ Pleased with the outcome of the LP and its
-              presentation. The typography layout is top notch and the images
-              chosen adds the dynamic touch I was looking for. ”, key: 4d350cf7
+              Original text:  — Wealth Management Models | Strategic Planning |
+              Digital Assets Advisory | Strategic Prime Funds | Funds Management
+              Advisory | Fund Creation Services, Treasurey Management | FX
+              Hedging Advisory | Trade Finance & Funding | Bonds Issuance |
+              Structured Products | Private Asset Funding | Single Stocks
+              Lending.., key: 71d9110f
             label: Text
-            name: 4d350cf7
+            name: 71d9110f
             widget: text
-          - hint: 'Original text: Camil Amos, key: -3b5d6682'
+          - hint: 'Original text: 2022, key: 1774fe'
             label: Text
-            name: '-3b5d6682'
-            widget: string
-          - hint: 'Original text: Architecte MA HES, key: 4591355a'
-            label: Text
-            name: 4591355a
-            widget: string
-          - hint: 'Original text: quatreaplus Sàrl, key: -55713d4a'
-            label: Text
-            name: '-55713d4a'
+            name: 1774fe
             widget: string
           - hint: >-
-              Original text: “ Throughout the entire project, Anthony was
-              responsive, collaborative, and dedicated to ensuring that every
-              aspect of the website met and exceeded the expectations of the
-              team. ”, key: -2bb6841a
+              Original text: Incorporation of Strategic Prime Trading Fund, key:
+              -441ef72f
             label: Text
-            name: '-2bb6841a'
+            name: '-441ef72f'
+            widget: string
+          - hint: >-
+              Original text: This process ensures the fund's operational
+              efficiency and alignment with investment objectives, promoting
+              robust performance and investor confidence., key: -33d7a7ed
+            label: Text
+            name: '-33d7a7ed'
             widget: text
-          - hint: 'Original text: Alexandre Doublet, key: -1b72e2b1'
+          - hint: 'Original text: 2023, key: 1774ff'
             label: Text
-            name: '-1b72e2b1'
-            widget: string
-          - hint: 'Original text: Artistic Director, key: 101b862b'
-            label: Text
-            name: 101b862b
-            widget: string
-          - hint: 'Original text: cie ADVQ, key: -73425b21'
-            label: Text
-            name: '-73425b21'
+            name: 1774ff
             widget: string
           - hint: >-
-              Original text: “ In every phase of my projects for leading
-              international ventures, Anthony consistently exhibited a great
-              level of creativity, professionalism, and technical skill -
-              maintaining a proactive approach from initial concept to final
-              delivery. Working with Anthony has been a great pleasure, and I
-              look forward to future collaborations. ”, key: -255b4702
+              Original text: Registered Financial Advisor in Canada (Alberta
+              Securities Commission), key: -10e37e19
             label: Text
-            name: '-255b4702'
+            name: '-10e37e19'
+            widget: string
+          - hint: >-
+              Original text: This accreditation underscores credibility and
+              trustworthiness of SAWM, ensuring our clients receive informed
+              guidance aligned with their financial goals and regulatory
+              expectations., key: -482767d4
+            label: Text
+            name: '-482767d4'
             widget: text
-          - hint: 'Original text: Jochen M. Wilms, key: 7f746a4e'
+          - hint: 'Original text: 2024, key: 177500'
             label: Text
-            name: 7f746a4e
+            name: '177500'
             widget: string
-          - hint: 'Original text: Tech Investor/Chairman, key: -3137bede'
+          - hint: 'Original text: First Expansion Plan, key: 399a01ba'
             label: Text
-            name: '-3137bede'
-            widget: string
-          - hint: 'Original text: W Ventures GmbH, key: 44751163'
-            label: Text
-            name: '44751163'
+            name: 399a01ba
             widget: string
           - hint: >-
-              Original text: “ Excellent work, thank you for your responsiveness
-              - I'm really looking forward to collaborating on our new website.
-              We'll be in touch. ”, key: -f0b5f11
+              Original text: In response to growing demand and our commitment to
+              providing exceptional services, we are excited to announce our
+              first major expansion., key: 6616427c
             label: Text
-            name: '-f0b5f11'
+            name: 6616427c
             widget: text
-          - hint: 'Original text: Dr. Donatela Bernardi, key: -18ca9baf'
+          - hint: 'Original text: scroll, key: -361a1933'
             label: Text
-            name: '-18ca9baf'
+            name: '-361a1933'
             widget: string
-          - hint: 'Original text: Director, key: 1284b7ac'
+          - hint: 'Original text: — Recognizing, key: 76ed2f9f'
             label: Text
-            name: 1284b7ac
-            widget: string
-          - hint: 'Original text: Maison Rousseau & Littérature, key: -773faf87'
-            label: Text
-            name: '-773faf87'
+            name: 76ed2f9f
             widget: string
           - hint: >-
-              Original text: I solve online brand identity issues, so you don't
-              have to., key: -60ede2b2
+              Original text:  individual needs, our team offers modern tailored
+              solutions., key: -4041bdfb
             label: Text
-            name: '-60ede2b2'
+            name: '-4041bdfb'
+            widget: string
+          - hint: 'Original text: Asset Management, key: 588acfb3'
+            label: Text
+            name: 588acfb3
+            widget: string
+          - hint: 'Original text: TL;DR, key: 4c32891'
+            label: Text
+            name: 4c32891
             widget: string
           - hint: >-
-              Original text: I help businesses shine online. I am the Digital
-              Designer you didn't know you needed., key: 21e91b01
+              Original text: By leveraging our extensive network and industry
+              expertise, we facilitate seamless interactions between our clients
+              and banks, brokerage firms, and other financial entities., key:
+              -55f8ac4
             label: Text
-            name: 21e91b01
-            widget: string
-          - hint: 'Original text: FAQ, key: 10ef6'
-            label: Text
-            name: 10ef6
-            widget: string
-          - hint: 'Original text: What services do you offer ?, key: e1e572b'
-            label: Text
-            name: e1e572b
-            widget: string
-          - hint: >-
-              Original text: Web Design, Web Development, Brand Strategy, Logo
-              Design, Corporate Identity Creation, Graphic Design, Generative AI
-              visuals, Content Creation, Advanced Web Analytics, Search Engine
-              Optimisation (SEO)., key: -3f487f6f
-            label: Text
-            name: '-3f487f6f'
+            name: '-55f8ac4'
             widget: text
-          - hint: 'Original text: What is your pricing ?, key: c632e32'
+          - hint: 'Original text: Wealth Management Models, key: -172d50ac'
             label: Text
-            name: c632e32
-            widget: string
-          - hint: >-
-              Original text: Typically, the pricing for my services is
-              influenced by the project's scope and specifications. Following
-              our initial conversation, I will furnish you with a comprehensive
-              proposal detailing the discussed services and their associated
-              costs., key: 7d89dd8
-            label: Text
-            name: 7d89dd8
-            widget: text
-          - hint: 'Original text: What is your process ?, key: 4992a69b'
-            label: Text
-            name: 4992a69b
-            widget: string
-          - hint: >-
-              Original text: My process begins with a thorough discussion to
-              understand your goals and requirements. I then create wireframes
-              and design mockups for your approval before proceeding to
-              development. Throughout the process, I maintain open communication
-              to ensure the final product aligns with your vision., key:
-              7b7118ac
-            label: Text
-            name: 7b7118ac
-            widget: text
-          - hint: >-
-              Original text: How long does it take from start to finish ?, key:
-              -186e6ea6
-            label: Text
-            name: '-186e6ea6'
-            widget: string
-          - hint: >-
-              Original text: The final timeline varies depending on the
-              complexity of the project and the features required. After
-              discussing your specific needs, I can provide a detailed timeline
-              outlining the different stages of development and an estimated
-              completion date. For MVPs, deployment within 24 hours, for other
-              websites within 4 weeks., key: -694057e
-            label: Text
-            name: '-694057e'
-            widget: text
-          - hint: >-
-              Original text: Tech questions, all you need to know., key:
-              -5367aa4f
-            label: Text
-            name: '-5367aa4f'
-            widget: string
-          - hint: >-
-              Original text: Can you assist with domain, hosting, email ?, key:
-              -4383a987
-            label: Text
-            name: '-4383a987'
-            widget: string
-          - hint: >-
-              Original text: Absolutely, I'll assist you in every step. I can
-              guide you through the process of domain registration and help you
-              choose a suitable hosting provider. If needed, I can also assist
-              with the setup and configuration of your hosting environment.,
-              key: -27a16619
-            label: Text
-            name: '-27a16619'
-            widget: text
-          - hint: >-
-              Original text: Do you offer maintenance and support ?, key:
-              45f051e
-            label: Text
-            name: 45f051e
-            widget: string
-          - hint: >-
-              Original text: Yes I do offer priority support if needed. I
-              provide ongoing maintenance and support services to ensure your
-              website remains up-to-date and secure. This can include regular
-              updates, troubleshooting, and addressing any issues that may arise
-              post-launch., key: 2abdb41
-            label: Text
-            name: 2abdb41
-            widget: text
-          - hint: >-
-              Original text: Do you offer SEO / analytics insights ?, key:
-              d1d5b22
-            label: Text
-            name: d1d5b22
-            widget: string
-          - hint: >-
-              Original text: Yes, I offer SEO and Analytics. I integrate SEO
-              best practices into the development process to ensure that your
-              website is search engine-friendly. This includes optimizing page
-              speed, using SEO-friendly URLs, and implementing other on-page SEO
-              elements. I also provide a wide range of tools to assist you in
-              gaining insights through analytics., key: -7b8cbc82
-            label: Text
-            name: '-7b8cbc82'
-            widget: text
-          - hint: 'Original text: Any questions ?, key: -36607e28'
-            label: Text
-            name: '-36607e28'
-            widget: string
-          - hint: >-
-              Original text: Clients I worked for as well as agencies I
-              partnered with., key: 40f0d5cd
-            label: Text
-            name: 40f0d5cd
-            widget: string
-          - hint: >-
-              Original text: Every new project is a chance to learn something
-              new and grow., key: 42fd376e
-            label: Text
-            name: 42fd376e
-            widget: string
-          - hint: 'Original text: GERMANY, key: 26405793'
-            label: Text
-            name: '26405793'
+            name: '-172d50ac'
             widget: string
           - hint: 'Original text: ‍, key: 200d'
             label: Text
             name: 200d
             widget: string
-          - hint: 'Original text: Gneisenaustrasse 89, key: -35c0e26f'
+          - hint: 'Original text: Execution – Only, key: -471b121f'
             label: Text
-            name: '-35c0e26f'
-            widget: string
-          - hint: 'Original text: 10961 Berlin, Xberg, key: -2401a391'
-            label: Text
-            name: '-2401a391'
-            widget: string
-          - hint: 'Original text: SWITZERLAND, key: -4427f07d'
-            label: Text
-            name: '-4427f07d'
-            widget: string
-          - hint: 'Original text: Chemin de la Monta 24, key: -61e37d5d'
-            label: Text
-            name: '-61e37d5d'
-            widget: string
-          - hint: 'Original text: 1961 St-Luc, Valais, key: 76791489'
-            label: Text
-            name: '76791489'
-            widget: string
-          - hint: 'Original text: PHILIPPINES, key: -2cf0d5f'
-            label: Text
-            name: '-2cf0d5f'
-            widget: string
-          - hint: 'Original text: World Plaza, 29F, key: -716735d3'
-            label: Text
-            name: '-716735d3'
-            widget: string
-          - hint: 'Original text: 5, key: 35'
-            label: Text
-            name: '35'
-            widget: string
-          - hint: 'Original text: th, key: e74'
-            label: Text
-            name: e74
-            widget: string
-          - hint: 'Original text:  Ave, BGC, Manila, key: -36b5514e'
-            label: Text
-            name: '-36b5514e'
-            widget: string
-          - hint: 'Original text: Stories that deliver, key: -3e36a187'
-            label: Text
-            name: '-3e36a187'
-            widget: string
-          - hint: 'Original text: Content that connects, key: -6ac26c65'
-            label: Text
-            name: '-6ac26c65'
-            widget: string
-          - hint: 'Original text: hello@anthonysalamin.ch, key: 29ff8bcf'
-            label: Text
-            name: 29ff8bcf
-            widget: string
-          - hint: 'Original text: Cookies, key: -64062591'
-            label: Text
-            name: '-64062591'
-            widget: string
-          - hint: 'Original text: Imprint, key: -29f92c17'
-            label: Text
-            name: '-29f92c17'
-            widget: string
-          - hint: 'Original text: Privacy Policy, key: -3fbde6f6'
-            label: Text
-            name: '-3fbde6f6'
-            widget: string
-          - hint: 'Original text: By clicking , key: 6ffc699d'
-            label: Text
-            name: 6ffc699d
-            widget: string
-          - hint: 'Original text: "Accept", key: -17108668'
-            label: Text
-            name: '-17108668'
+            name: '-471b121f'
             widget: string
           - hint: >-
-              Original text: , you agree to all cookies being stored on your
-              device in order to improve site navigation and analyze site usage.
-              See our , key: -38e95a7
+              Original text: Our Execution Only model provides the fundamental
+              services of SAWM. We refrain from offering advisory services under
+              this mandate, placing the full responsibility for portfolio
+              management in the hands of investors., key: d6c2012
             label: Text
-            name: '-38e95a7'
+            name: d6c2012
             widget: text
-          - hint: 'Original text:  for more information., key: -466d844a'
+          - hint: 'Original text: Advisory, key: -268b0327'
             label: Text
-            name: '-466d844a'
-            widget: string
-          - hint: 'Original text: Preferences, key: -25fb7928'
-            label: Text
-            name: '-25fb7928'
-            widget: string
-          - hint: 'Original text: Decline, key: -40d9052a'
-            label: Text
-            name: '-40d9052a'
-            widget: string
-          - hint: 'Original text: Accept, key: 748ca128'
-            label: Text
-            name: 748ca128
-            widget: string
-          - hint: 'Original text: Privacy Policy Preference Center, key: -10118a5c'
-            label: Text
-            name: '-10118a5c'
+            name: '-268b0327'
             widget: string
           - hint: >-
-              Original text: When you visit websites, they may store or retrieve
-              data from your browser. This storage is often necessary for the
-              basic functionality of the website. It may be used for marketing,
-              analysis and site personalization purposes, for example to record
-              your preferences. Protecting your privacy is important to us,
-              which is why you have the option of disabling certain types of
-              storage that are not necessary for the basic operation of the
-              website. Blocking certain categories may have an impact on your
-              experience of the website., key: -4fff6191
+              Original text: For investors who seek to retain control over their
+              investments while also desiring expert guidance and support for
+              their investment strategy, SAWM offers the Advisory service. We
+              collaborate closely with our clients throughout their investment
+              journey, providing extensive research and expertise to facilitate
+              more informed and sophisticated decision-making and portfolio
+              management., key: -48a92a17
             label: Text
-            name: '-4fff6191'
+            name: '-48a92a17'
             widget: text
-          - hint: 'Original text: Reject all cookies, key: 41778c2f'
+          - hint: 'Original text: Discretionary, key: -6e12e4d4'
             label: Text
-            name: 41778c2f
-            widget: string
-          - hint: 'Original text: Accept all cookies, key: -204607e8'
-            label: Text
-            name: '-204607e8'
+            name: '-6e12e4d4'
             widget: string
           - hint: >-
-              Original text: Manage consent preferences by category, key:
-              b6cf8de
+              Original text: With our Discretionary asset management service,
+              clients entrust the management of their portfolios to the experts
+              at SAWM. Our team diligently monitors the markets on a daily
+              basis, making investment decisions based on each client's risk
+              tolerance and desired returns. This model relieves investors from
+              the burden of day-to-day decision-making, allowing them to remain
+              unburdened by constant communication regarding asset transactions
+              and strategy changes. However, our clients have access to detailed
+              information about trades and executions, ensuring utmost
+              transparency throughout the process., key: -7194668f
             label: Text
-            name: b6cf8de
-            widget: string
-          - hint: 'Original text: Essential, key: 16a3932e'
-            label: Text
-            name: 16a3932e
-            widget: string
-          - hint: 'Original text: Always active, key: -653019e9'
-            label: Text
-            name: '-653019e9'
-            widget: string
-          - hint: >-
-              Original text: These elements are necessary for the basic
-              operation of the website., key: 19288811
-            label: Text
-            name: '19288811'
-            widget: string
-          - hint: 'Original text: Marketing, key: 3fc9ea06'
-            label: Text
-            name: 3fc9ea06
-            widget: string
-          - hint: >-
-              Original text: These elements are used to deliver ads that are
-              more relevant to you and your interests. They may also be used to
-              limit the number of times you see an ad and to measure the
-              effectiveness of advertising campaigns. Advertising networks
-              generally place them with the authorization of the website
-              operator., key: 406db949
-            label: Text
-            name: 406db949
+            name: '-7194668f'
             widget: text
-          - hint: 'Original text: Personalization, key: -13f831fc'
+          - hint: 'Original text: Strategic Planning, key: -27efd5a3'
             label: Text
-            name: '-13f831fc'
+            name: '-27efd5a3'
+            widget: string
+          - hint: 'Original text: Wealth Pillar, key: 1f02e6fd'
+            label: Text
+            name: 1f02e6fd
             widget: string
           - hint: >-
-              Original text: These elements enable the website to remember the
-              choices you make (such as your username, language or location) and
-              provide enhanced, more personal features. For example, a website
-              may provide you with local weather reports or traffic information
-              by storing data about your current location., key: 6bd3544f
+              Original text: Planning for the transfer and organization of
+              significant wealth can be a daunting task, often evoking feelings
+              of apprehension. At SAWM, we approach this challenge with a
+              boutique perspective and family values, instilling confidence in
+              our clients. You can rely on our internal expertise and external
+              resources to navigate this complex terrain. Through prudent wealth
+              planning, we help you anticipate potential challenges and devise
+              solutions to ensure a fair and seamless distribution when the time
+              comes., key: c0b21aa
             label: Text
-            name: 6bd3544f
+            name: c0b21aa
             widget: text
-          - hint: 'Original text: Analysis, key: -39356904'
+          - hint: 'Original text: Estate Pillar, key: 1bb15e7e'
             label: Text
-            name: '-39356904'
+            name: 1bb15e7e
             widget: string
           - hint: >-
-              Original text: These elements help the website operator to
-              understand how the site works, how visitors interact with the site
-              and whether there are any technical problems. This type of storage
-              generally does not collect information that could identify a
-              visitor., key: 58b3ae3a
+              Original text: Addressing succession matters involves navigating a
+              landscape that is both important and intricate, blending emotions
+              with rational decision-making. The bond between a banker and their
+              client is often shaped by discussions surrounding this crucial
+              topic. Sometimes extending beyond financial considerations, the
+              personal insights and “friendly” advice of the banker complement
+              the guidance of specialists. SAWM stands beside you every step of
+              the way – before, during, and after this significant transition.,
+              key: -290662
             label: Text
-            name: 58b3ae3a
+            name: '-290662'
             widget: text
-          - hint: 'Original text: Confirm my preferences and close, key: -717776ad'
+          - hint: 'Original text: Tax Pillar, key: 32d9ad7f'
             label: Text
-            name: '-717776ad'
-            widget: string
-          - hint: 'Original text: I worked with, key: 18c47a1f'
-            label: Text
-            name: 18c47a1f
+            name: 32d9ad7f
             widget: string
           - hint: >-
-              Original text: I've been fortunate to collaborate with an
-              inspiring array of clients, each bringing a unique perspective and
-              challenge to my work., key: -562f9faf
+              Original text: SAWM collaborates with a network of external
+              representatives specializing in Swiss and international tax
+              matters. These experts provide invaluable insights into your tax
+              obligations, both domestically and internationally, ensuring that
+              your overall wealth management strategy is built on a foundation
+              of efficient tax planning. This tailored approach enables us to
+              assess the tax implications of various transactions, whether it
+              involves investments, asset acquisitions, or changes in residency,
+              empowering you to make informed decisions.roughout the process.,
+              key: -20c1e551
             label: Text
-            name: '-562f9faf'
+            name: '-20c1e551'
+            widget: text
+          - hint: 'Original text: Digital Assets, key: -3ea0e535'
+            label: Text
+            name: '-3ea0e535'
+            widget: string
+          - hint: >-
+              Original text: By utilizing their services our clients not only
+              can invest and hold crypto currencies but also can utilize from
+              term deposits for their investment. , key: 793ffbff
+            label: Text
+            name: 793ffbff
             widget: text
           - hint: >-
-              Original text: An impactful digital presence for a simple
-              transparent pricing. , key: -633a982d
-            label: Text
-            name: '-633a982d'
-            widget: string
-          - hint: >-
-              Original text: Tailoring affordable price packages to suit every
-              client's unique needs, big or small., key: -347aa30d
-            label: Text
-            name: '-347aa30d'
-            widget: string
-          - hint: 'Original text: Starter, key: -ddc2791'
-            label: Text
-            name: '-ddc2791'
-            widget: string
-          - hint: "Original text: For ambitious MVP\_projects, key: 17a993a5"
-            label: Text
-            name: 17a993a5
-            widget: string
-          - hint: 'Original text: from, key: 3017aa'
-            label: Text
-            name: 3017aa
-            widget: string
-          - hint: 'Original text:  €, key: 248c'
-            label: Text
-            name: 248c
-            widget: string
-          - hint: 'Original text: 1.989, key: 2c845bd'
-            label: Text
-            name: 2c845bd
-            widget: string
-          - hint: 'Original text: excl. VAT, key: 6079313b'
-            label: Text
-            name: 6079313b
-            widget: string
-          - hint: 'Original text: Start, key: 4c7d442'
-            label: Text
-            name: 4c7d442
-            widget: string
-          - hint: 'Original text: Business, key: -4080dc20'
-            label: Text
-            name: '-4080dc20'
-            widget: string
-          - hint: 'Original text: Suited for small businesses, key: 5cda0eb2'
-            label: Text
-            name: 5cda0eb2
-            widget: string
-          - hint: 'Original text: 3.989, key: 2e474bf'
-            label: Text
-            name: 2e474bf
-            widget: string
-          - hint: 'Original text: Pro, key: 13a8d'
-            label: Text
-            name: 13a8d
-            widget: string
-          - hint: 'Original text: For tailor-made solutions, key: -2875c48e'
-            label: Text
-            name: '-2875c48e'
-            widget: string
-          - hint: 'Original text: 8K, key: 713'
-            label: Text
-            name: '713'
-            widget: string
-          - hint: 'Original text: Web Design & Development, key: 582f52cb'
-            label: Text
-            name: 582f52cb
-            widget: string
-          - hint: 'Original text: Time to Go Live, key: -4a4ea46e'
-            label: Text
-            name: '-4a4ea46e'
-            widget: string
-          - hint: 'Original text: 1 day, key: 2c28f2d'
-            label: Text
-            name: 2c28f2d
-            widget: string
-          - hint: 'Original text: 4 weeks, key: -3e483ed'
-            label: Text
-            name: '-3e483ed'
-            widget: string
-          - hint: 'Original text: Scope based, key: -6a404139'
-            label: Text
-            name: '-6a404139'
-            widget: string
-          - hint: 'Original text: UI/UX Design, key: -1c9afbc0'
-            label: Text
-            name: '-1c9afbc0'
-            widget: string
-          - hint: 'Original text: Front + Backend Development, key: -733450dd'
-            label: Text
-            name: '-733450dd'
-            widget: string
-          - hint: 'Original text: Pages, key: 494ffa4'
-            label: Text
-            name: 494ffa4
-            widget: string
-          - hint: 'Original text: 1 pager, key: 5d045b14'
-            label: Text
-            name: 5d045b14
-            widget: string
-          - hint: 'Original text: up to 4 pages, key: -10ff4928'
-            label: Text
-            name: '-10ff4928'
-            widget: string
-          - hint: 'Original text: Unlimited, key: -1806873f'
-            label: Text
-            name: '-1806873f'
-            widget: string
-          - hint: 'Original text: CMS (Content Management System), key: -3e219c2b'
-            label: Text
-            name: '-3e219c2b'
-            widget: string
-          - hint: 'Original text: Moderate, key: -21089edd'
-            label: Text
-            name: '-21089edd'
-            widget: string
-          - hint: 'Original text: eCommerce, key: 5ef21a60'
-            label: Text
-            name: 5ef21a60
-            widget: string
-          - hint: 'Original text: No, key: 9e1'
-            label: Text
-            name: '9e1'
-            widget: string
-          - hint: 'Original text: Yes, key: 15ac7'
-            label: Text
-            name: 15ac7
-            widget: string
-          - hint: 'Original text: Graphic Design, key: 39cb9a36'
-            label: Text
-            name: 39cb9a36
-            widget: string
-          - hint: 'Original text: Logotype Design + Business Cards, key: 196de5ff'
-            label: Text
-            name: 196de5ff
-            widget: string
-          - hint: 'Original text: Add on, key: 749a29de'
-            label: Text
-            name: 749a29de
-            widget: string
-          - hint: 'Original text: Typography + Color Palette, key: 3357b278'
-            label: Text
-            name: 3357b278
-            widget: string
-          - hint: 'Original text: On going Design services, key: 71354ad9'
-            label: Text
-            name: 71354ad9
-            widget: string
-          - hint: 'Original text: On retainer, key: 5f457573'
-            label: Text
-            name: 5f457573
-            widget: string
-          - hint: 'Original text: Hosting, key: -5b4a86e6'
-            label: Text
-            name: '-5b4a86e6'
-            widget: string
-          - hint: >-
-              Original text: Recurring monthly cost (billed yearly), key:
-              -7ce62bd0
-            label: Text
-            name: '-7ce62bd0'
-            widget: string
-          - hint: 'Original text: €, key: 20ac'
-            label: Text
-            name: 20ac
-            widget: string
-          - hint: 'Original text: 29,95, key: 2db2ca1'
-            label: Text
-            name: 2db2ca1
-            widget: string
-          - hint: 'Original text: from €, key: -4b77064a'
-            label: Text
-            name: '-4b77064a'
-            widget: string
-          - hint: 'Original text: 59,95, key: 3057324'
-            label: Text
-            name: '3057324'
-            widget: string
-          - hint: 'Original text: 99,95, key: 33dd128'
-            label: Text
-            name: 33dd128
-            widget: string
-          - hint: 'Original text: DNS management incl. SSL certificate, key: 36d5b2fd'
-            label: Text
-            name: 36d5b2fd
-            widget: string
-          - hint: 'Original text: 99% CDN uptime garanteed, key: 403fcb0b'
-            label: Text
-            name: 403fcb0b
-            widget: string
-          - hint: 'Original text: Customer support, key: 54e721ad'
-            label: Text
-            name: 54e721ad
-            widget: string
-          - hint: 'Original text: Near instant, key: 1d7bf609'
-            label: Text
-            name: 1d7bf609
-            widget: string
-          - hint: 'Original text: Priority, key: -419d223c'
-            label: Text
-            name: '-419d223c'
-            widget: string
-          - hint: >-
-              Original text: Ensuring trust and accountability on
-              anthonysalamin.ch, key: 60144c49
-            label: Text
-            name: 60144c49
-            widget: string
-          - hint: >-
-              Original text: Discover transparency and compliance with
-              anthonysalamin.ch's imprint., key: 30da05cb
-            label: Text
-            name: 30da05cb
-            widget: string
-          - hint: 'Original text: Go Live, key: 6b2b7124'
-            label: Text
-            name: 6b2b7124
-            widget: string
-          - hint: >-
-              Original text:  in 24 hrs, gain a competitive advantage., key:
-              26f68cfa
-            label: Text
-            name: 26f68cfa
-            widget: string
-          - hint: >-
-              Original text: I leverage AI technologies and cutting edge
-              development tools to streamline my workflow., key: -701b685c
-            label: Text
-            name: '-701b685c'
-            widget: string
-          - hint: 'Original text: Start-up, key: 52566406'
-            label: Text
-            name: '52566406'
-            widget: string
-          - hint: 'Original text: For ambitious MVP projects., key: -472fae57'
-            label: Text
-            name: '-472fae57'
-            widget: string
-          - hint: 'Original text: from , key: 5d2ddb6'
-            label: Text
-            name: 5d2ddb6
-            widget: string
-          - hint: 'Original text: 1.499, key: 2c83317'
-            label: Text
-            name: 2c83317
-            widget: string
-          - hint: 'Original text: Get Started, key: -364d0a89'
-            label: Text
-            name: '-364d0a89'
-            widget: string
-          - hint: 'Original text: Go live in 24hrs, key: -5cdbf7f8'
-            label: Text
-            name: '-5cdbf7f8'
-            widget: string
-          - hint: >-
-              Original text: Launch your landing page's initial version within
-              one day, then iterate on it later., key: -2a19a6e2
-            label: Text
-            name: '-2a19a6e2'
-            widget: string
-          - hint: 'Original text: Responsive MVP UX/UI Design, key: -3fa8c2fd'
-            label: Text
-            name: '-3fa8c2fd'
-            widget: string
-          - hint: >-
-              Original text: Ensure your website is responsive across all
-              devices: desktops, tablets, and smartphones., key: 33b967f6
-            label: Text
-            name: 33b967f6
-            widget: string
-          - hint: 'Original text: 1 pager — unlimited sections, key: 40f6f3a5'
-            label: Text
-            name: 40f6f3a5
-            widget: string
-          - hint: >-
-              Original text: Give me the raw content, and I'll handle the
-              implementation of the sections., key: 3ce7e4fb
-            label: Text
-            name: 3ce7e4fb
-            widget: string
-          - hint: 'Original text: Custom domain + email, key: 38475c7a'
-            label: Text
-            name: 38475c7a
-            widget: string
-          - hint: >-
-              Original text: Seeking a strong impact? Elevate your presence with
-              a professional touch using a custom domain and email address.,
-              key: -6b9d0bf7
-            label: Text
-            name: '-6b9d0bf7'
-            widget: text
-          - hint: 'Original text: SEO website optimisation, key: -d7a6f84'
-            label: Text
-            name: '-d7a6f84'
-            widget: string
-          - hint: >-
-              Original text: I configure Google Console for optimal indexing and
-              other SEO wizarderies, key: 548b1667
-            label: Text
-            name: 548b1667
-            widget: string
-          - hint: 'Original text: Advanced Analytics & Heatmap, key: 6a2bba3a'
-            label: Text
-            name: 6a2bba3a
-            widget: string
-          - hint: >-
-              Original text: Gain insights into how your users interact with
-              your website., key: -56fc389
-            label: Text
-            name: '-56fc389'
-            widget: string
-          - hint: 'Original text: Email support, key: 47323b2b'
-            label: Text
-            name: 47323b2b
-            widget: string
-          - hint: >-
-              Original text: A question, hit me up. I'll get back to you ASAP.,
-              key: -47ad0d7d
-            label: Text
-            name: '-47ad0d7d'
-            widget: string
-          - hint: >-
-              Original text: For small to medium businesses websites., key:
-              -3f279a46
-            label: Text
-            name: '-3f279a46'
-            widget: string
-          - hint: 'Original text:  from , key: 3c6df196'
-            label: Text
-            name: 3c6df196
-            widget: string
-          - hint: 'Original text: 3.899, key: 2e4711d'
-            label: Text
-            name: 2e4711d
-            widget: string
-          - hint: 'Original text: Go live in 4 weeks, key: -4d44ff4c'
-            label: Text
-            name: '-4d44ff4c'
-            widget: string
-          - hint: >-
-              Original text: I'll provide the initial iteration of your website
-              within one month., key: 6434d5c5
-            label: Text
-            name: 6434d5c5
-            widget: string
-          - hint: 'Original text: All from Starter + custom UI, key: 68d50206'
-            label: Text
-            name: 68d50206
-            widget: string
-          - hint: >-
-              Original text: I create and develop bespoke UI designs tailored to
-              match your vision., key: 3580fb32
-            label: Text
-            name: 3580fb32
-            widget: string
-          - hint: 'Original text: CMS Dashboard, key: -3af56bc3'
-            label: Text
-            name: '-3af56bc3'
-            widget: string
-          - hint: >-
-              Original text: Manage your content effortlessly with a
-              user-friendly CMS dashboard., key: 6af95fe8
-            label: Text
-            name: 6af95fe8
-            widget: string
-          - hint: 'Original text: Up to 4 different pages, key: de65b11'
-            label: Text
-            name: de65b11
-            widget: string
-          - hint: 'Original text: Let''s talk., key: -683917f7'
-            label: Text
-            name: '-683917f7'
-            widget: string
-          - hint: 'Original text: Ecommerce (Add-on), key: -383d144a'
-            label: Text
-            name: '-383d144a'
-            widget: string
-          - hint: 'Original text: Want to sell online, get in touch !, key: 77df11af'
-            label: Text
-            name: 77df11af
-            widget: string
-          - hint: 'Original text: Logo Design (Add-on), key: 3d02e963'
-            label: Text
-            name: 3d02e963
-            widget: string
-          - hint: >-
-              Original text: Require a logo launch or relaunch? I'll craft one
-              for you., key: 682bb4f0
-            label: Text
-            name: 682bb4f0
-            widget: string
-          - hint: 'Original text: 24x7x365 Premium support, key: 66aaf781'
-            label: Text
-            name: 66aaf781
-            widget: string
-          - hint: >-
-              Original text: I offer near instant support, get in touch !, key:
-              1d1e7d16
-            label: Text
-            name: 1d1e7d16
-            widget: string
-          - hint: 'Original text: most popular, key: -598868c4'
-            label: Text
-            name: '-598868c4'
-            widget: string
-          - hint: 'Original text: For tailor-made solutions., key: 19bd32fc'
-            label: Text
-            name: 19bd32fc
-            widget: string
-          - hint: 'Original text: Let''s talk, key: -13e0cf3b'
-            label: Text
-            name: '-13e0cf3b'
-            widget: string
-          - hint: 'Original text: Scope-based , key: -2e16e37a'
-            label: Text
-            name: '-2e16e37a'
-            widget: string
-          - hint: >-
-              Original text: Let's talk about your requirements, and I'll
-              provide you with a non-binding estimate afterwards., key: 63adf519
-            label: Text
-            name: 63adf519
-            widget: text
-          - hint: 'Original text: Everything from Business, key: b44d909'
-            label: Text
-            name: b44d909
-            widget: string
-          - hint: 'Original text: You read that right, and much more !, key: 76b84d40'
-            label: Text
-            name: 76b84d40
-            widget: string
-          - hint: 'Original text: Multi-language, key: -75dc2274'
-            label: Text
-            name: '-75dc2274'
-            widget: string
-          - hint: >-
-              Original text: Multilanguage: key for global reach. Target your
-              audience, wherever they are, key: 7d8d87d3
-            label: Text
-            name: 7d8d87d3
-            widget: string
-          - hint: 'Original text: Full Corporate Identity (CI), key: 427abe51'
-            label: Text
-            name: 427abe51
-            widget: string
-          - hint: >-
-              Original text: Elevate your online identity to the next level!
-              Explore logotype, logomark, color palette, and typography
-              research., key: -257584e3
-            label: Text
-            name: '-257584e3'
-            widget: text
-          - hint: 'Original text: Custom API integrations, key: 643a5a34'
-            label: Text
-            name: 643a5a34
-            widget: string
-          - hint: >-
-              Original text: Need something special from a third party, let me
-              know., key: -5f8344dd
-            label: Text
-            name: '-5f8344dd'
-            widget: string
-          - hint: 'Original text: Design requests (Add-on), key: 664e70d0'
-            label: Text
-            name: 664e70d0
-            widget: string
-          - hint: >-
-              Original text: I offer ongoing design services, get in touch.,
-              key: 2058446c
-            label: Text
-            name: 2058446c
-            widget: string
-          - hint: 'Original text: Advanced Web animation, key: -5ac579c6'
-            label: Text
-            name: '-5ac579c6'
-            widget: string
-          - hint: >-
-              Original text: I make things look good, I make them move., key:
-              7175f382
-            label: Text
-            name: 7175f382
-            widget: string
-          - hint: >-
-              Original text: Discover transparency and compliance with
-              anthonysalamin.ch's privacy policy., key: 3bda755e
-            label: Text
-            name: 3bda755e
-            widget: string
-          - hint: 'Original text: See images, key: 4c81705'
-            label: Text
-            name: 4c81705
-            widget: string
-          - hint: 'Original text: Watch film, key: 6d5fa655'
-            label: Text
-            name: 6d5fa655
-            widget: string
-          - hint: 'Original text: See website, key: 6b3eddae'
-            label: Text
-            name: 6b3eddae
-            widget: string
-          - hint: 'Original text: See all images, key: 401a0fe4'
-            label: Text
-            name: 401a0fe4
-            widget: string
-          - hint: 'Original text: Similar projects, key: -443520d1'
-            label: Text
-            name: '-443520d1'
-            widget: string
-          - hint: 'Original text: All projects, key: 20991839'
-            label: Text
-            name: '20991839'
-            widget: string
-          - hint: >-
-              Original text: Focus on what you do best, simply let me handle the
-              rest for you., key: -5a9fb6e3
-            label: Text
-            name: '-5a9fb6e3'
-            widget: string
-          - hint: 'Original text: Work with me, key: 3ac1ed43'
-            label: Text
-            name: 3ac1ed43
-            widget: string
-          - hint: >-
-              Original text: Looking for a new website or a refined brand
-              identity ?, key: -4c03ca3d
-            label: Text
-            name: '-4c03ca3d'
-            widget: string
-          - hint: >-
-              Original text: It's a quick task, only a minute to fill out this
-              form., key: 1aebc4df
-            label: Text
-            name: 1aebc4df
-            widget: string
-          - hint: 'Original text: What is the age of your business ?, key: 21edf76d'
-            label: Text
-            name: 21edf76d
-            widget: string
-          - hint: 'Original text: Pre-launch, key: 63950a3d'
-            label: Text
-            name: 63950a3d
-            widget: string
-          - hint: 'Original text: 0 — 5 years old, key: 4efe72b6'
-            label: Text
-            name: 4efe72b6
-            widget: string
-          - hint: 'Original text: Over 5 years old, key: -6eeb6c7a'
-            label: Text
-            name: '-6eeb6c7a'
-            widget: string
-          - hint: >-
-              Original text: Which services are you keen on working with me for
-              ?, key: -67224c5
-            label: Text
-            name: '-67224c5'
-            widget: string
-          - hint: >-
-              Original text: I provide a complimentary audit of your current
-              website and/or brand identity, with no obligation on your part.,
-              key: 6f621d36
-            label: Text
-            name: 6f621d36
-            widget: text
-          - hint: 'Original text: FREE, key: 210e6c'
-            label: Text
-            name: 210e6c
-            widget: string
-          - hint: 'Original text:  audit, key: 3c28afbb'
-            label: Text
-            name: 3c28afbb
-            widget: string
-          - hint: 'Original text: NEW Website 🔥, key: 1a47b0ed'
-            label: Text
-            name: 1a47b0ed
-            widget: string
-          - hint: 'Original text: LP, key: 984'
-            label: Text
-            name: '984'
-            widget: string
-          - hint: 'Original text: Relaunch, key: -1d311c3a'
-            label: Text
-            name: '-1d311c3a'
-            widget: string
-          - hint: "Original text: Web\_Design, key: -2e23df36"
-            label: Text
-            name: '-2e23df36'
-            widget: string
-          - hint: 'Original text: Web Development, key: 4072162f'
-            label: Text
-            name: 4072162f
-            widget: string
-          - hint: 'Original text: Custom Domain & Email, key: -db3efcb'
-            label: Text
-            name: '-db3efcb'
-            widget: string
-          - hint: 'Original text: Content Creation, key: -3278451a'
-            label: Text
-            name: '-3278451a'
-            widget: string
-          - hint: 'Original text: Logo Design, key: -1781ae2d'
-            label: Text
-            name: '-1781ae2d'
-            widget: string
-          - hint: 'Original text: Corporate Identity, key: -6478f5a7'
-            label: Text
-            name: '-6478f5a7'
-            widget: string
-          - hint: 'Original text: Generative AI visuals, key: -767065ad'
-            label: Text
-            name: '-767065ad'
-            widget: string
-          - hint: 'Original text: Web Analytics, key: -4d1f3e86'
-            label: Text
-            name: '-4d1f3e86'
-            widget: string
-          - hint: 'Original text: SEO, key: 1403d'
-            label: Text
-            name: 1403d
-            widget: string
-          - hint: 'Original text: Technical Support, key: 3e5b85cc'
-            label: Text
-            name: 3e5b85cc
-            widget: string
-          - hint: 'Original text: What is your estimated timeline ?, key: -31946f69'
-            label: Text
-            name: '-31946f69'
-            widget: string
-          - hint: 'Original text: ASAP 😏, key: -14ddef'
-            label: Text
-            name: '-14ddef'
-            widget: string
-          - hint: 'Original text: 1 — 2 months, key: -76e81084'
-            label: Text
-            name: '-76e81084'
-            widget: string
-          - hint: 'Original text: 2 — 4 months, key: 608bee99'
-            label: Text
-            name: 608bee99
-            widget: string
-          - hint: 'Original text: Not sure yet, key: -3f58a0d6'
-            label: Text
-            name: '-3f58a0d6'
-            widget: string
-          - hint: 'Original text: How shall we start a conversation ?, key: 608faf2d'
-            label: Text
-            name: 608faf2d
-            widget: string
-          - hint: 'Original text: How did you hear about me ?, key: -3fb1d936'
-            label: Text
-            name: '-3fb1d936'
-            widget: string
-          - hint: 'Original text: Referral, key: -27372043'
-            label: Text
-            name: '-27372043'
-            widget: string
-          - hint: 'Original text: Organic search, key: -389e5363'
-            label: Text
-            name: '-389e5363'
-            widget: string
-          - hint: 'Original text: Other, key: 48f8ef0'
-            label: Text
-            name: 48f8ef0
-            widget: string
-          - hint: >-
-              Original text: Ready to submit your request and kick off a new
-              project with me !, key: -42bab57
-            label: Text
-            name: '-42bab57'
-            widget: string
-          - hint: >-
-              Original text: I acknowledge that I have read and consent to the ,
-              key: -581715e2
-            label: Text
-            name: '-581715e2'
-            widget: string
-          - hint: 'Original text:  on anthonysalamin.ch, key: -73535c24'
-            label: Text
-            name: '-73535c24'
-            widget: string
-          - hint: >-
-              Original text: Each request will undergo evaluation, and a
-              comprehensive cost estimate will be provided to the client,
-              delineating both fixed and recurring expenses. By using my email
-              form, you acknowledge and agree that the information you submit
-              will be used solely for the purpose of addressing your request.,
-              key: 7fb5a8c7
-            label: Text
-            name: 7fb5a8c7
+              Original text: In addition, many investors show high demand to
+              other yield enhancing investment offering of our partner such as
+              trading structured products Dual Currency Deposits, SharkFin
+              structures and investing in crypto currency funds as well as
+              lending of their crypto assets., key: -44cbc040
+            label: Text
+            name: '-44cbc040'
             widget: text
           - hint: >-
-              Original text: Thank you ! I'll get back to you ASAP., key:
-              4a66c8ca
+              Original text: Through a comprehensive understanding of each
+              client’s unique financial situation and goals, we are able to
+              match them with institutions that offer the most favorable terms,
+              services, and support., key: -30bf461
             label: Text
-            name: 4a66c8ca
-            widget: string
-          - hint: >-
-              Original text: Ooops, something went wrong. Please write me an
-              email to , key: 605db99e
-            label: Text
-            name: 605db99e
-            widget: string
-          - hint: "Original text: Thank you, \_I will review your request ASAP., key: 68567b63"
-            label: Text
-            name: 68567b63
-            widget: string
-          - hint: 'Original text: This is a tooltip , key: 25ef8c30'
-            label: Text
-            name: 25ef8c30
-            widget: string
-          - hint: 'Original text: Customer Support, key: -47e04673'
-            label: Text
-            name: '-47e04673'
-            widget: string
-          - hint: 'Original text: Advanced filtering system, key: -49d96a3d'
-            label: Text
-            name: '-49d96a3d'
-            widget: string
-          - hint: 'Original text: Projets, key: 50c8e507'
-            label: Text
-            name: 50c8e507
-            widget: string
-          - hint: 'Original text: Réserver un call, key: -941cdc1'
-            label: Text
-            name: '-941cdc1'
-            widget: string
-          - hint: 'Original text: Audit Gratuit, key: e02a9bd'
-            label: Text
-            name: e02a9bd
-            widget: string
-          - hint: >-
-              Original text: A la recherche d'un nouveau site web ou d'une
-              identité de marque raffinée ?, key: 752d78f7
-            label: Text
-            name: 752d78f7
-            widget: string
-          - hint: 'Original text: Dompteur de pixels, key: -5e9f8298'
-            label: Text
-            name: '-5e9f8298'
-            widget: string
-          - hint: >-
-              Original text: Ce formulaire ne prend qu'une minute à remplir,
-              promis., key: 47df03aa
-            label: Text
-            name: 47df03aa
-            widget: string
-          - hint: 'Original text: Quel est l''âge de votre entreprise ?, key: 6ae95601'
-            label: Text
-            name: 6ae95601
-            widget: string
-          - hint: 'Original text: Prélancement, key: 5f03a872'
-            label: Text
-            name: 5f03a872
-            widget: string
-          - hint: 'Original text: 0 — 5 ans, key: -140adb81'
-            label: Text
-            name: '-140adb81'
-            widget: string
-          - hint: 'Original text: Plus de 5 ans, key: -39a9f13e'
-            label: Text
-            name: '-39a9f13e'
-            widget: string
-          - hint: >-
-              Original text: Quels sont les services pour lesquels vous
-              souhaiteriez travailler avec moi ?, key: 1115840a
-            label: Text
-            name: 1115840a
-            widget: string
-          - hint: >-
-              Original text: Je propose un audit gratuit de l'ensemble de votre
-              site web existant et/ou identité de marque — sans engagement.,
-              key: -1487c6d8
-            label: Text
-            name: '-1487c6d8'
+            name: '-30bf461'
             widget: text
-          - hint: 'Original text: Audit GRATUIT, key: -2a6a6243'
+          - hint: 'Original text: Fund, key: 2196e5'
             label: Text
-            name: '-2a6a6243'
-            widget: string
-          - hint: 'Original text: Nouveau site web 🔥, key: 6a1ea904'
-            label: Text
-            name: 6a1ea904
-            widget: string
-          - hint: 'Original text: Relaunch de Website, key: -65e6738a'
-            label: Text
-            name: '-65e6738a'
-            widget: string
-          - hint: 'Original text: Développement Web, key: -69208ca0'
-            label: Text
-            name: '-69208ca0'
-            widget: string
-          - hint: 'Original text: Domaine et e-mails pro, key: 5e79ecf'
-            label: Text
-            name: 5e79ecf
-            widget: string
-          - hint: 'Original text: Création de contenu, key: 111a4420'
-            label: Text
-            name: 111a4420
-            widget: string
-          - hint: 'Original text: Conception de logo, key: 12202e8a'
-            label: Text
-            name: 12202e8a
-            widget: string
-          - hint: 'Original text: Identité d''entreprise, key: -be76c50'
-            label: Text
-            name: '-be76c50'
-            widget: string
-          - hint: 'Original text: Conception graphique, key: -7d0def5a'
-            label: Text
-            name: '-7d0def5a'
-            widget: string
-          - hint: 'Original text: Images d''IA générative, key: 1c00d70d'
-            label: Text
-            name: 1c00d70d
-            widget: string
-          - hint: 'Original text: Support technique, key: -6fe7dce1'
-            label: Text
-            name: '-6fe7dce1'
-            widget: string
-          - hint: 'Original text: Quel est votre deadline ?, key: 5aef15f8'
-            label: Text
-            name: 5aef15f8
-            widget: string
-          - hint: 'Original text: 1 — 2 mois, key: -7e2035eb'
-            label: Text
-            name: '-7e2035eb'
-            widget: string
-          - hint: 'Original text: 2 — 4 mois, key: 7992ec72'
-            label: Text
-            name: 7992ec72
-            widget: string
-          - hint: 'Original text: Pas encore sûr, key: c99090'
-            label: Text
-            name: c99090
-            widget: string
-          - hint: 'Original text: Comment amorcer une conversation ?, key: 3aa72bb6'
-            label: Text
-            name: 3aa72bb6
+            name: '2196e5'
             widget: string
           - hint: >-
-              Original text: Comment avez-vous été mis(e) au courant de ma
-              présence ?, key: -473384b1
+              Original text: SAWM's Strategic Prime Funds offer stability and
+              growth in finance and wealth management for sophisticated
+              investors, emphasizing capital appreciation and risk management.,
+              key: -14dee069
             label: Text
-            name: '-473384b1'
-            widget: string
-          - hint: 'Original text: Référence, key: -4e57cbdd'
+            name: '-14dee069'
+            widget: text
+          - hint: 'Original text: Strategic Prime Funds, key: 1a574e4d'
             label: Text
-            name: '-4e57cbdd'
-            widget: string
-          - hint: 'Original text: Recherche organique, key: 70022744'
-            label: Text
-            name: '70022744'
-            widget: string
-          - hint: 'Original text: Autres, key: 75923200'
-            label: Text
-            name: '75923200'
+            name: 1a574e4d
             widget: string
           - hint: >-
-              Original text: Prêt à soumettre votre demande et à démarrer un
-              nouveau projet avec moi ?, key: -324a9a72
+              Original text: At the core of Strategic Prime Funds lies a
+              meticulous selection process that identifies opportunities across
+              various asset classes. Whether it’s equities, fixed income
+              securities, or alternative investments, these funds leverage
+              in-depth market research and analysis to construct well-balanced
+              portfolios. By diversifying across sectors and geographies,
+              Strategic Prime Funds not only aim to maximize returns but also
+              shield investors from market volatility., key: 4e81ac9e
             label: Text
-            name: '-324a9a72'
-            widget: string
-          - hint: 'Original text: Je reconnais avoir lu et accepté la , key: -65afee4'
-            label: Text
-            name: '-65afee4'
-            widget: string
-          - hint: 'Original text: politique de confidentialité, key: 6ad7d527'
-            label: Text
-            name: 6ad7d527
-            widget: string
-          - hint: 'Original text:  du site anthonysalamin.ch., key: -5f1638e5'
-            label: Text
-            name: '-5f1638e5'
-            widget: string
-          - hint: >-
-              Original text: Chaque demande fera l'objet d'une évaluation et une
-              estimation complète des coûts sera fournie au client, en précisant
-              les dépenses fixes et récurrentes. En utilisant mon formulaire de
-              courrier électronique, vous reconnaissez et acceptez que les
-              informations que vous soumettez seront utilisées uniquement dans
-              le but de répondre à votre demande., key: -71e3024c
-            label: Text
-            name: '-71e3024c'
+            name: 4e81ac9e
             widget: text
           - hint: >-
-              Original text: Éloges chaleureux de clients comblés., key:
-              4ed7b85d
+              Original text: Moreover, Strategic Prime Funds are adept at
+              adapting to ever-changing market conditions and economic cycles.
+              With a nimble investment approach, these funds have the
+              flexibility to seize opportunities as they arise while maintaining
+              a long-term perspective. This agility, coupled with a disciplined
+              risk management framework, ensures that investors can navigate
+              through turbulent times with confidence, knowing that their wealth
+              is in capable hands., key: -4ee3a32d
             label: Text
-            name: 4ed7b85d
-            widget: string
-          - hint: >-
-              Original text: Fier et reconnaissant de l'opportunité de
-              travailler avec des clients dans un large éventail d'industries.,
-              key: 2ea66487
-            label: Text
-            name: 2ea66487
-            widget: text
-          - hint: "Original text: “ Anthony est un créatif exceptionnellement doué et universel. Dans son exploration des différents moyens, méthodes et outils, il fait preuve d'une intuition admirable.\_\_”, key: 750f8b2c"
-            label: Text
-            name: 750f8b2c
-            widget: text
-          - hint: 'Original text: Journaliste et rédactrice, key: 3acd8061'
-            label: Text
-            name: 3acd8061
-            widget: string
-          - hint: >-
-              Original text: “ J'ai été très satisfait du résultat du LP et de
-              sa présentation. La mise en page typographique est de premier
-              ordre et les images choisies ajoutent la touche dynamique que je
-              recherchais. ”, key: 1e709c04
-            label: Text
-            name: 1e709c04
+            name: '-4ee3a32d'
             widget: text
           - hint: >-
-              Original text: “ Tout au long du projet, Anthony s'est montré
-              réactif, collaboratif et soucieux de s'assurer que chaque aspect
-              du site Web répondait aux attentes de l'équipe, voire les
-              dépassait. ”, key: -6aff7abc
+              Original text: In conclusion, Strategic Prime Funds stand as a
+              testament to the commitment of finance and wealth management
+              companies towards delivering value and stability to their clients.
+              With their strategic focus, rigorous selection process, and
+              adaptability, these funds serve as a cornerstone in building and
+              preserving wealth in an increasingly complex financial landscape.,
+              key: 1d3b11ff
             label: Text
-            name: '-6aff7abc'
+            name: 1d3b11ff
             widget: text
-          - hint: 'Original text: Directeur artistique, key: 7e591ae6'
+          - hint: 'Original text: Institutional Services, key: -49fa73c5'
             label: Text
-            name: 7e591ae6
+            name: '-49fa73c5'
             widget: string
           - hint: >-
-              Original text: “ À chaque étape de mes projets pour des
-              entreprises internationales de premier plan, Anthony a toujours
-              fait preuve d'un grand niveau de créativité, de professionnalisme
-              et de compétences techniques - en maintenant une approche
-              proactive depuis le concept initial jusqu'à la livraison finale.
-              Travailler avec Anthony a été un grand plaisir, et j'attends avec
-              impatience de futures collaborations. ”, key: 2285c7b7
+              Original text: SAWM enhances client treasury operations with
+              advanced technology, optimizing efficiency and maximizing cash
+              returns. Our FX Hedging services manage currency risk, and our
+              Trade Finance & Funding solutions optimize trade finance and
+              secure capital for business growth., key: a640c8
             label: Text
-            name: 2285c7b7
+            name: a640c8
             widget: text
-          - hint: 'Original text: Investisseur technologique/CEO, key: 6bc43cb1'
+          - hint: 'Original text: Treasury Management, key: 698509c0'
             label: Text
-            name: 6bc43cb1
+            name: 698509c0
             widget: string
           - hint: >-
-              Original text: “ Excellent travail, merci pour votre réactivité -
-              j'ai vraiment hâte de collaborer à notre nouveau site web. Nous
-              resterons en contact. ”, key: 1e749f3c
+              Original text: At Silver Arrow Wealth Management, our Treasury
+              Management services provide clients with comprehensive solutions
+              to optimize their cash flow, liquidity, and risk management
+              strategies. From cash forecasting and liquidity management to
+              optimizing working capital and mitigating financial risks, our
+              team of experts works closely with clients to develop tailored
+              treasury solutions that align with their objectives., key:
+              -25cc027
             label: Text
-            name: 1e749f3c
+            name: '-25cc027'
             widget: text
-          - hint: 'Original text: Directrie, key: 3e124865'
+          - hint: 'Original text: Trade Finance Advisory & Funding, key: 2eca34de'
             label: Text
-            name: '3e124865'
+            name: 2eca34de
             widget: string
           - hint: >-
-              Original text: Je résous vos problèmes d'identité de marque en
-              ligne., key: -20093843
-            label: Text
-            name: '-20093843'
-            widget: string
-          - hint: >-
-              Original text: Je suis le concepteur numérique dont vous ne
-              soupçonniez pas le besoin., key: 207f4f6a
-            label: Text
-            name: 207f4f6a
-            widget: string
-          - hint: 'Original text: Prendre contact, key: -48bda494'
-            label: Text
-            name: '-48bda494'
-            widget: string
-          - hint: 'Original text: Voir le portfolio, key: -f559701'
-            label: Text
-            name: '-f559701'
-            widget: string
-          - hint: 'Original text: Mise en ligne, key: -5af3f5a4'
-            label: Text
-            name: '-5af3f5a4'
-            widget: string
-          - hint: >-
-              Original text:  en 24h pour un avantage concurrentiel., key:
-              16bd794
-            label: Text
-            name: 16bd794
-            widget: string
-          - hint: >-
-              Original text: L'intelligence Artificiel et autres outils de
-              développement de pointe sont mes alliés., key: -5bd77513
-            label: Text
-            name: '-5bd77513'
-            widget: string
-          - hint: >-
-              Original text: Pour les projets de startups ambitieux., key:
-              cfd40bc
-            label: Text
-            name: cfd40bc
-            widget: string
-          - hint: 'Original text: dès , key: 30ea11'
-            label: Text
-            name: 30ea11
-            widget: string
-          - hint: 'Original text: CHF, key: 10481'
-            label: Text
-            name: '10481'
-            widget: string
-          - hint: 'Original text: excl. TVA, key: 60792c31'
-            label: Text
-            name: 60792c31
-            widget: string
-          - hint: 'Original text: MVP sous 24hrs, key: -6eb73086'
-            label: Text
-            name: '-6eb73086'
-            widget: string
-          - hint: >-
-              Original text: Lancez la version initiale de votre page d'acceuil
-              dans la journée, puis modifiez-la par la suite., key: 4b294267
-            label: Text
-            name: 4b294267
-            widget: text
-          - hint: 'Original text: Conception MVP responsive UX/UI, key: -4abaf153'
-            label: Text
-            name: '-4abaf153'
-            widget: string
-          - hint: >-
-              Original text: Veillez à ce que votre site web soit adapté à tous
-              les appareils : ordinateurs de bureau, tablettes et smartphones.,
-              key: -779bf0db
-            label: Text
-            name: '-779bf0db'
-            widget: text
-          - hint: 'Original text: 1 page - sections illimitées, key: -7d4c40e4'
-            label: Text
-            name: '-7d4c40e4'
-            widget: string
-          - hint: >-
-              Original text: Donnez-moi le contenu brut et je m'occuperai de la
-              mise en œuvre des sections., key: -6b53c191
-            label: Text
-            name: '-6b53c191'
-            widget: string
-          - hint: 'Original text: Domaine + email pro, key: -50cf6b2b'
-            label: Text
-            name: '-50cf6b2b'
-            widget: string
-          - hint: >-
-              Original text: Vous souhaitez avoir un impact fort ? Améliorez
-              votre présence avec une touche professionnelle en utilisant un
-              domaine et une adresse électronique personnalisés., key: -790f366b
-            label: Text
-            name: '-790f366b'
-            widget: text
-          - hint: 'Original text: Optimisation web (SEO), key: -1ab05004'
-            label: Text
-            name: '-1ab05004'
-            widget: string
-          - hint: >-
-              Original text: Je configure Google Console pour une indexation
-              optimale et d'autres magies de référencement., key: 1813ce23
-            label: Text
-            name: 1813ce23
-            widget: text
-          - hint: 'Original text: Analyses de traffic, key: 2b7c6afe'
-            label: Text
-            name: 2b7c6afe
-            widget: string
-          - hint: >-
-              Original text: Découvrez comment vos utilisateurs interagissent
-              avec votre site web., key: 3a21f06e
-            label: Text
-            name: 3a21f06e
-            widget: string
-          - hint: >-
-              Original text: Une question, j'y répondrais le plus tôt possible.,
-              key: -19907cb7
-            label: Text
-            name: '-19907cb7'
-            widget: string
-          - hint: >-
-              Original text: Pour les petites et moyennes entreprises., key:
-              -45623165
-            label: Text
-            name: '-45623165'
-            widget: string
-          - hint: 'Original text:  dès , key: 1f3da31'
-            label: Text
-            name: 1f3da31
-            widget: string
-          - hint: 'Original text: 4.899, key: 2f2889e'
-            label: Text
-            name: 2f2889e
-            widget: string
-          - hint: 'Original text: Mise en ligne sous 4 semaines, key: -5101c479'
-            label: Text
-            name: '-5101c479'
-            widget: string
-          - hint: >-
-              Original text: Je fournis l'itération initiale de votre site web
-              dans un délai d'un mois., key: 6dab2c5e
-            label: Text
-            name: 6dab2c5e
-            widget: string
-          - hint: 'Original text: Tout ce qu''offre "Start-up", key: 38234223'
-            label: Text
-            name: '38234223'
-            widget: string
-          - hint: >-
-              Original text: Je crée et développe des interfaces utilisateur sur
-              mesure, adaptées à votre vision., key: -1eb64ce4
-            label: Text
-            name: '-1eb64ce4'
-            widget: string
-          - hint: 'Original text: Dashboard CMS, key: 5da417d'
-            label: Text
-            name: 5da417d
-            widget: string
-          - hint: >-
-              Original text: Gérez votre contenu sans effort grâce à un tableau
-              de bord CMS convivial., key: -f21d528
-            label: Text
-            name: '-f21d528'
-            widget: string
-          - hint: 'Original text: Jusqu''à 4 pages différentes, key: -5c2f7898'
-            label: Text
-            name: '-5c2f7898'
-            widget: string
-          - hint: 'Original text: Discutons-en., key: 650ffc38'
-            label: Text
-            name: 650ffc38
-            widget: string
-          - hint: >-
-              Original text: Vous souhaitez vendre en ligne, contactez-moi !,
-              key: 2da62001
-            label: Text
-            name: 2da62001
-            widget: string
-          - hint: >-
-              Original text: Vous avez besoin de lancer ou de relancer un logo ?
-              J'en créerai un pour vous., key: 58fdc7b6
-            label: Text
-            name: 58fdc7b6
-            widget: string
-          - hint: 'Original text: 24x7x365 Premium Support, key: -361c709f'
-            label: Text
-            name: '-361c709f'
-            widget: string
-          - hint: >-
-              Original text: J'offre une assistance quasi instantanée,
-              contactez-moi !, key: -1634c0e8
-            label: Text
-            name: '-1634c0e8'
-            widget: string
-          - hint: 'Original text: Populaire, key: 5285ace3'
-            label: Text
-            name: 5285ace3
-            widget: string
-          - hint: 'Original text: Pour des solutions sur mesure., key: -348a8a67'
-            label: Text
-            name: '-348a8a67'
-            widget: string
-          - hint: 'Original text: Discutons, key: 708c6ee0'
-            label: Text
-            name: 708c6ee0
-            widget: string
-          - hint: 'Original text: Cahier des charges spécifique, key: -52abf031'
-            label: Text
-            name: '-52abf031'
-            widget: string
-          - hint: >-
-              Original text: Discutons de vos besoins et je vous fournirai
-              ensuite un devis sans engagement., key: 5c549b13
-            label: Text
-            name: 5c549b13
-            widget: string
-          - hint: 'Original text: Tout ce qu''offre "Business", key: 70127d89'
-            label: Text
-            name: 70127d89
-            widget: string
-          - hint: >-
-              Original text: Vous avez bien lu, et bien plus encore !, key:
-              459280f0
-            label: Text
-            name: 459280f0
-            widget: string
-          - hint: 'Original text: Multi-langues, key: -2d179d7f'
-            label: Text
-            name: '-2d179d7f'
-            widget: string
-          - hint: >-
-              Original text: Multilingue : la clé pour une portée mondiale.
-              Ciblez votre public, où qu'il se trouve, key: 6e776331
-            label: Text
-            name: '6e776331'
-            widget: string
-          - hint: 'Original text: Identité visuelle complète, key: -7746cbcb'
-            label: Text
-            name: '-7746cbcb'
-            widget: string
-          - hint: >-
-              Original text: Faites passer votre identité en ligne au niveau
-              supérieur ! Explorez les recherches sur les logotypes, les
-              logomarques, les palettes de couleurs et la typographie., key:
-              161af6f0
-            label: Text
-            name: 161af6f0
-            widget: text
-          - hint: 'Original text: Intégrations API, key: -30f039e3'
-            label: Text
-            name: '-30f039e3'
-            widget: string
-          - hint: >-
-              Original text: Si vous avez besoin de quelque chose de spécial de
-              la part d'un tiers, faites-le moi savoir., key: 3c620b4f
-            label: Text
-            name: 3c620b4f
-            widget: text
-          - hint: 'Original text: Design graphique (Add-on) , key: 68f1c84e'
-            label: Text
-            name: 68f1c84e
-            widget: string
-          - hint: 'Original text: Animation Web avancée, key: 5dad3235'
-            label: Text
-            name: 5dad3235
-            widget: string
-          - hint: >-
-              Original text: Je fais en sorte que les choses soient belles et
-              qu'elles bougent., key: -79118fe8
-            label: Text
-            name: '-79118fe8'
-            widget: string
-          - hint: 'Original text: Des questions ?, key: 4f5382fe'
-            label: Text
-            name: 4f5382fe
-            widget: string
-          - hint: >-
-              Original text: Quels sont les services que vous proposez ?, key:
-              -285d4b91
-            label: Text
-            name: '-285d4b91'
-            widget: string
-          - hint: >-
-              Original text: Webdesign, développement web, création d' identité
-              d'entreprise, Stratégie de marque, développement de logo,
-              conception graphique, images et visuels généré par IA, création de
-              contenu, web analytics, référencement SEO., key: 63832321
-            label: Text
-            name: '63832321'
-            widget: text
-          - hint: 'Original text: Quels sont vos tarifs ?, key: -4eb89a64'
-            label: Text
-            name: '-4eb89a64'
-            widget: string
-          - hint: >-
-              Original text: En règle générale, le prix de mes services est
-              influencé par la portée et les spécifications du projet. Après
-              notre première conversation, je vous fournirai une proposition
-              complète détaillant les services discutés et leurs coûts
-              associés., key: 58ce73c8
-            label: Text
-            name: 58ce73c8
-            widget: text
-          - hint: 'Original text: Quelle est votre démarche ?, key: -1ba21972'
-            label: Text
-            name: '-1ba21972'
-            widget: string
-          - hint: >-
-              Original text: Mon processus commence par une discussion
-              approfondie pour comprendre vos objectifs et vos besoins. Je crée
-              ensuite des wireframes et des maquettes de conception que je
-              soumets à votre approbation avant de passer au développement. Tout
-              au long du processus, je maintiens une communication ouverte pour
-              m'assurer que le produit final correspond à votre vision., key:
-              -2dd92457
-            label: Text
-            name: '-2dd92457'
-            widget: text
-          - hint: 'Original text: Combien de temps cela prend-il ?, key: 6ffa0c6e'
-            label: Text
-            name: 6ffa0c6e
-            widget: string
-          - hint: >-
-              Original text: Le calendrier final varie en fonction de la
-              complexité du projet et des fonctionnalités requises. Après avoir
-              discuté de vos besoins spécifiques, je peux vous fournir un
-              calendrier détaillé décrivant les différentes étapes du
-              développement et une date d'achèvement estimée. Pour les MVP,
-              déploiement sous 24h, pour autres websites dès 4 semaines., key:
-              404f140f
-            label: Text
-            name: 404f140f
+              Original text: We offer a comprehensive range of trade finance
+              solutions, including letters of credit, trade finance facilities,
+              and supply chain finance, tailored to meet the unique needs of
+              importers, exporters, and distributors., key: -704a7a41
+            label: Text
+            name: '-704a7a41'
             widget: text
           - hint: >-
-              Original text: Questions techniques, tout ce qu'il faut savoir.,
-              key: -34c821ac
+              Original text: Our team works closely with clients to structure
+              financing arrangements that optimize cash flow, reduce transaction
+              costs, and mitigate trade-related risks, allowing them to seize
+              new opportunities and expand their global footprint., key:
+              -408974de
             label: Text
-            name: '-34c821ac'
-            widget: string
-          - hint: >-
-              Original text: Pouvez-vous m'aider avec la réservation de nom de
-              domaine, l'hébergement et email professionnel ?, key: -c9a699b
-            label: Text
-            name: '-c9a699b'
+            name: '-408974de'
             widget: text
-          - hint: >-
-              Original text: Absolument, je vous assisterai à chaque étape. Je
-              peux vous guider tout au long du processus d'enregistrement du
-              domaine et vous aider à choisir un fournisseur d'hébergement
-              approprié. Si nécessaire, je peux également vous assister dans
-              l'installation et la configuration de votre environnement
-              d'hébergement., key: -147a3acd
+          - hint: 'Original text: — The next generation, key: 1ccb8c8a'
             label: Text
-            name: '-147a3acd'
-            widget: text
-          - hint: >-
-              Original text: Proposez-vous des services de maintenance et
-              d'assistance à la clientèle ?, key: 5062662e
-            label: Text
-            name: 5062662e
+            name: 1ccb8c8a
             widget: string
-          - hint: >-
-              Original text: Oui, je propose une assistance prioritaire si
-              nécessaire. Je propose des services de maintenance et d'assistance
-              en continu pour garantir que votre site web reste à jour et
-              sécurisé. Cela peut inclure des mises à jour régulières, le
-              dépannage et la résolution de tout problème pouvant survenir après
-              le lancement., key: 7e40bbec
+          - hint: "Original text:  \_of wealth creation has arrived, key: -3d57e290"
             label: Text
-            name: 7e40bbec
-            widget: text
-          - hint: "Original text: Offrez-vous des conseils en matière de référencement SEO\_et d'analyse de traffic ?, key: -7064da80"
-            label: Text
-            name: '-7064da80'
+            name: '-3d57e290'
             widget: string
-          - hint: >-
-              Original text: Oui, je propose des services de référencement et
-              d'analyse. J'intègre les meilleures pratiques de référencement
-              dans le processus de développement afin de garantir que votre site
-              Web est adapté aux moteurs de recherche. Cela comprend
-              l'optimisation de la vitesse des pages, l'utilisation d'URL
-              adaptés aux moteurs de recherche et la mise en œuvre d'autres
-              éléments de référencement sur la page. Je fournis également une
-              large gamme d'outils pour vous aider à obtenir des informations
-              par le biais de l'analyse., key: e79223b
+          - hint: 'Original text: Let’s connect, key: 28850a7f'
             label: Text
-            name: e79223b
-            widget: text
-          - hint: >-
-              Original text: Clients et agences avec lesquelles je me suis
-              associé., key: -229f43eb
-            label: Text
-            name: '-229f43eb'
+            name: 28850a7f
             widget: string
-          - hint: >-
-              Original text: Chaque nouveau projet est l'occasion d'apprendre
-              quelque chose de nouveau et de se développer., key: -59cf7a36
+          - hint: 'Original text: Funds, key: 411462e'
             label: Text
-            name: '-59cf7a36'
-            widget: text
-          - hint: 'Original text: ALLEMAGNE, key: -5552d23a'
-            label: Text
-            name: '-5552d23a'
+            name: 411462e
             widget: string
-          - hint: 'Original text: SUISSE, key: -6d8d85a2'
+          - hint: 'Original text: Networking, key: 5a50c314'
             label: Text
-            name: '-6d8d85a2'
+            name: 5a50c314
             widget: string
-          - hint: 'Original text: Des histoires qui font mouche, key: 6abf9899'
+          - hint: 'Original text: Threema, key: 13795b92'
             label: Text
-            name: 6abf9899
+            name: 13795b92
             widget: string
-          - hint: 'Original text: Un contenu qui connecte, key: 773490a3'
+          - hint: 'Original text: Telegram, key: -4d3cb2df'
             label: Text
-            name: 773490a3
+            name: '-4d3cb2df'
+            widget: string
+          - hint: 'Original text: Whatsapp, key: 772ccdb2'
+            label: Text
+            name: 772ccdb2
+            widget: string
+          - hint: 'Original text: Signal, key: -6c65a538'
+            label: Text
+            name: '-6c65a538'
+            widget: string
+          - hint: 'Original text: WeChat, key: -65db149a'
+            label: Text
+            name: '-65db149a'
+            widget: string
+          - hint: 'Original text: Mail, key: 2479d7'
+            label: Text
+            name: 2479d7
+            widget: string
+          - hint: 'Original text: Phone, key: 4984d4e'
+            label: Text
+            name: 4984d4e
+            widget: string
+          - hint: 'Original text: Maps, key: 247ab7'
+            label: Text
+            name: 247ab7
+            widget: string
+          - hint: 'Original text: Wealth Management, key: -665be56a'
+            label: Text
+            name: '-665be56a'
+            widget: string
+          - hint: 'Original text: about, key: 585238d'
+            label: Text
+            name: 585238d
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: Digital Assets , key: 6a843eb5'
+            label: Text
+            name: 6a843eb5
+            widget: string
+          - hint: 'Original text: About, key: 3c2336d'
+            label: Text
+            name: 3c2336d
+            widget: string
+          - hint: 'Original text: Partnering, key: -7f0bfdc6'
+            label: Text
+            name: '-7f0bfdc6'
             widget: string
           - hint: 'Original text: Contact, key: -64104400'
             label: Text
             name: '-64104400'
             widget: string
-          - hint: 'Original text: Mentions légales, key: -68d80214'
+          - hint: 'Original text: Publication, key: 23254a0c'
             label: Text
-            name: '-68d80214'
+            name: 23254a0c
             widget: string
-          - hint: 'Original text: Projekte, key: -37ac656c'
+          - hint: 'Original text: Best Execution Policy, key: -4887f9ea'
             label: Text
-            name: '-37ac656c'
+            name: '-4887f9ea'
             widget: string
-          - hint: 'Original text: Leistungen, key: 302bdc66'
+          - hint: "Original text: © \_, key: 27ee9"
             label: Text
-            name: 302bdc66
+            name: 27ee9
             widget: string
-          - hint: 'Original text: Call buchen, key: 322e0e83'
+          - hint: 'Original text: XXXX, key: 295600'
             label: Text
-            name: 322e0e83
+            name: '295600'
             widget: string
-          - hint: 'Original text: Gratis-Audit, key: -21b09a2a'
+          - hint: "Original text:  \_Silver Arrow SA, key: -374aa708"
             label: Text
-            name: '-21b09a2a'
+            name: '-374aa708'
             widget: string
-          - hint: >-
-              Original text: Suchen Sie eine neue Website oder eine neue
-              Markenidentität?, key: 58469582
+          - hint: 'Original text: Design, key: 79ceadde'
             label: Text
-            name: '58469582'
+            name: 79ceadde
             widget: string
-          - hint: 'Original text: Ich schiebe Pixel herum, key: -507572a8'
+          - hint: 'Original text: anthonysalamin.ch, key: -67104443'
             label: Text
-            name: '-507572a8'
+            name: '-67104443'
             widget: string
-          - hint: >-
-              Original text: Das Ausfüllen dieses Formulars dauert 1 Minute,
-              versprochen., key: -28638f41
+          - hint: 'Original text: — Create, key: 58c556a8'
             label: Text
-            name: '-28638f41'
+            name: 58c556a8
             widget: string
-          - hint: 'Original text: Wie alt ist Ihr Unternehmen?, key: 186e3919'
+          - hint: 'Original text:  your claim to future wealth, key: -5a1e226a'
             label: Text
-            name: '186e3919'
+            name: '-5a1e226a'
             widget: string
-          - hint: 'Original text: 0 — 5 Jahre alt, key: -179080ba'
+          - hint: 'Original text: More, key: 24af75'
             label: Text
-            name: '-179080ba'
-            widget: string
-          - hint: 'Original text: Über 5 Jahre alt, key: 62b886d5'
-            label: Text
-            name: 62b886d5
+            name: 24af75
             widget: string
           - hint: >-
-              Original text: Für welche Dienstleistungen würden Sie gerne mit
-              mir arbeiten?, key: 1cd11c90
+              Original text: We provide full fledged access to global markets
+              through top tier investment banks, helping you structure complex
+              investments with familiar counterparties., key: 35a1d2f0
             label: Text
-            name: 1cd11c90
-            widget: string
-          - hint: >-
-              Original text: Ich biete eine kostenlose Prüfung Ihrer gesamten
-              bestehenden Website und/oder Markenidentität an - unverbindlich.,
-              key: -24c6f6c7
-            label: Text
-            name: '-24c6f6c7'
-            widget: text
-          - hint: 'Original text: KOSTENLOSES Audit, key: 279d460b'
-            label: Text
-            name: 279d460b
-            widget: string
-          - hint: 'Original text: NEUE Website 🔥, key: -17f73e7a'
-            label: Text
-            name: '-17f73e7a'
-            widget: string
-          - hint: 'Original text: Web-Design, key: e6f8297'
-            label: Text
-            name: e6f8297
-            widget: string
-          - hint: 'Original text: Web-Entwicklung, key: 41c9eb6e'
-            label: Text
-            name: 41c9eb6e
-            widget: string
-          - hint: 'Original text: Domäne & pro E-Mail, key: 6b3fd2f3'
-            label: Text
-            name: 6b3fd2f3
-            widget: string
-          - hint: 'Original text: Logo-Design, key: -67d0abe0'
-            label: Text
-            name: '-67d0abe0'
-            widget: string
-          - hint: 'Original text: Unternehmensidentität, key: -29a47f7b'
-            label: Text
-            name: '-29a47f7b'
-            widget: string
-          - hint: 'Original text: Grafik-Design, key: 54d3a079'
-            label: Text
-            name: 54d3a079
-            widget: string
-          - hint: 'Original text: Generative KI-Visualisierungen, key: 6b76ae02'
-            label: Text
-            name: 6b76ae02
-            widget: string
-          - hint: 'Original text: Web-Analytik, key: -4976dad2'
-            label: Text
-            name: '-4976dad2'
-            widget: string
-          - hint: 'Original text: Technischer Support, key: 1263e203'
-            label: Text
-            name: '1263e203'
-            widget: string
-          - hint: >-
-              Original text: Wie sieht Ihr voraussichtlicher Zeitplan aus ?,
-              key: -38e98d46
-            label: Text
-            name: '-38e98d46'
-            widget: string
-          - hint: 'Original text: 1 — 2 Monate, key: 527c95af'
-            label: Text
-            name: 527c95af
-            widget: string
-          - hint: 'Original text: 2 — 4 Monate, key: 29f094cc'
-            label: Text
-            name: 29f094cc
-            widget: string
-          - hint: 'Original text: Ich bin noch nicht sicher, key: 3789dca3'
-            label: Text
-            name: 3789dca3
-            widget: string
-          - hint: >-
-              Original text: Wie sollen wir ein Gespräch beginnen ?, key:
-              -378467c9
-            label: Text
-            name: '-378467c9'
-            widget: string
-          - hint: 'Original text: Wie haben Sie von mir erfahren ?, key: 762f34bb'
-            label: Text
-            name: 762f34bb
-            widget: string
-          - hint: 'Original text: Sonstiges, key: -5d6ed7e1'
-            label: Text
-            name: '-5d6ed7e1'
-            widget: string
-          - hint: >-
-              Original text: Sind Sie bereit, Ihre Anfrage einzureichen und ein
-              neues Projekt mit mir zu starten ?, key: 11d94678
-            label: Text
-            name: 11d94678
-            widget: string
-          - hint: 'Original text: Ich bestätige, dass ich die , key: 3ce9fda0'
-            label: Text
-            name: 3ce9fda0
-            widget: string
-          - hint: 'Original text: Datenschutzbestimmungen, key: -25d20dab'
-            label: Text
-            name: '-25d20dab'
-            widget: string
-          - hint: >-
-              Original text:  auf anthonysalamin.ch gelesen habe und damit
-              einverstanden bin., key: -8bb8a8d
-            label: Text
-            name: '-8bb8a8d'
-            widget: string
-          - hint: >-
-              Original text: Jede Anfrage wird geprüft, und dem Kunden wird ein
-              umfassender Kostenvoranschlag vorgelegt, in dem sowohl die festen
-              als auch die wiederkehrenden Ausgaben aufgeführt sind. Wenn Sie
-              mein E-Mail-Formular verwenden, erklären Sie sich damit
-              einverstanden, dass die von Ihnen übermittelten Informationen
-              ausschließlich zur Bearbeitung Ihrer Anfrage verwendet werden.,
-              key: -5f93039d
-            label: Text
-            name: '-5f93039d'
+            name: 35a1d2f0
             widget: text
           - hint: >-
-              Original text: Freundliche Worte von zufriedenen Kunden., key:
-              -12e24f7
+              Original text: SilverArrow facilitates seamless client
+              interactions with banks, brokerages, and financial entities., key:
+              47bce475
             label: Text
-            name: '-12e24f7'
+            name: 47bce475
+            widget: text
+          - hint: "Original text: We provide a safe heaven for securing long term investments within the tranquility of a fully regulated Swiss asset manager.\_, key: 289138"
+            label: Text
+            name: '289138'
+            widget: text
+          - hint: "Original text: Client Services\_, key: 6a6a75ed"
+            label: Text
+            name: 6a6a75ed
+            widget: string
+          - hint: 'Original text: Various Control Levels, key: 781bf8c7'
+            label: Text
+            name: 781bf8c7
+            widget: string
+          - hint: "Original text: Wether you wish to maintain full operational control using our Execution-Only model, rely on our Advisory to make investment decisions, or trust our Discretionary strategies, we easily adapt to unique requirements.\_, key: -35675259"
+            label: Text
+            name: '-35675259'
+            widget: text
+          - hint: 'Original text: Customised Approach, key: -7b3fdd32'
+            label: Text
+            name: '-7b3fdd32'
             widget: string
           - hint: >-
-              Original text: Ich bin dankbar für die Möglichkeit, mit Kunden aus
-              den unterschiedlichsten Branchen zusammenzuarbeiten., key:
-              69aeb220
+              Original text: Ranging from real estate investments, asset
+              acquisitions, or changes in residency, we empower clients with our
+              networks and experience to make informed decisions., key:
+              -1cc2ed82
             label: Text
-            name: 69aeb220
+            name: '-1cc2ed82'
+            widget: text
+          - hint: 'Original text: Additional tailored services, key: -7f660ed'
+            label: Text
+            name: '-7f660ed'
+            widget: string
+          - hint: >-
+              Original text: “The best time to plant a tree was 20 years ago.
+              The second-best time is now.”, key: -6805f081
+            label: Text
+            name: '-6805f081'
+            widget: string
+          - hint: 'Original text: — Chinese proverb, key: 7ce24ed'
+            label: Text
+            name: 7ce24ed
+            widget: string
+          - hint: 'Original text: — Time, key: -40e07c87'
+            label: Text
+            name: '-40e07c87'
+            widget: string
+          - hint: >-
+              Original text:  is our greatest resource - let’s spend it wisely,
+              key: -68d104f
+            label: Text
+            name: '-68d104f'
+            widget: string
+          - hint: >-
+              Original text: We create enduring partnerships with ambitious
+              businesses that want to make history, and collaborate with them in
+              the pursuit of that goal., key: -6f6317a
+            label: Text
+            name: '-6f6317a'
             widget: text
           - hint: >-
-              Original text: “ Anthony Salamin ist ein aussergewöhnlich
-              universell begabter Kreativer. In der Wahl seiner Mittel, Methoden
-              und Werkzeuge, die Anthony exzessiv erforscht, bewegt er sich
-              zugleich mit einer bewundernswerten Intuition. Seine Entwürfe sind
-              feinfühlig und aufregend, dabei unaufdringlich und immer auf den
-              Punkt gebracht., key: -5f1636bd
+              Original text: Engage in purposeful conversations with a community
+              of experienced investors and family offices., key: 25b177d1
             label: Text
-            name: '-5f1636bd'
+            name: 25b177d1
+            widget: text
+          - hint: 'Original text: Client Services, key: 34fb2d13'
+            label: Text
+            name: 34fb2d13
+            widget: string
+          - hint: 'Original text: UHNWI, key: 4cfb82d'
+            label: Text
+            name: 4cfb82d
+            widget: string
+          - hint: >-
+              Original text: For those who have chosen Switzerland as their hub,
+              Silver Arrow offers a wide range of supporting services, local
+              contacts and off market opportunities., key: -3ac2d6dd
+            label: Text
+            name: '-3ac2d6dd'
+            widget: text
+          - hint: 'Original text: Family Offices, key: -5ee1af85'
+            label: Text
+            name: '-5ee1af85'
+            widget: string
+          - hint: >-
+              Original text: Our network of counterparties possess priceless
+              knowledge and countless business opportunities focused around
+              Swiss private banking and cutting edge fintech products., key:
+              -297ffe02
+            label: Text
+            name: '-297ffe02'
+            widget: text
+          - hint: 'Original text: Digital Asset Providers, key: -57c5faf6'
+            label: Text
+            name: '-57c5faf6'
+            widget: string
+          - hint: >-
+              Original text: We are always open to new partnerships with
+              compliant financial institutions worldwide and continuously
+              develop relationships in the growing digital economy., key:
+              -746f5a77
+            label: Text
+            name: '-746f5a77'
             widget: text
           - hint: >-
-              Original text: “ Ich bin mit dem Ergebnis der LP und ihrer
-              Präsentation sehr zufrieden. Das typografische Layout ist
-              erstklassig und die ausgewählten Bilder geben dem Ganzen die
-              Dynamik, die ich gesucht habe. ”, key: 3ceb18be
+              Original text: “The secret of business is to know something that
+              nobody else knows.”, key: -1244017c
             label: Text
-            name: 3ceb18be
-            widget: text
-          - hint: 'Original text: Architekt MA HES, key: -495762e3'
+            name: '-1244017c'
+            widget: string
+          - hint: 'Original text: — Aristotle Onassis, key: -510f9729'
             label: Text
-            name: '-495762e3'
+            name: '-510f9729'
+            widget: string
+          - hint: 'Original text: — Invest, key: 62d1d5a1'
+            label: Text
+            name: 62d1d5a1
+            widget: string
+          - hint: 'Original text:  in modern fundamentals, key: -6b59c62c'
+            label: Text
+            name: '-6b59c62c'
             widget: string
           - hint: >-
-              Original text: “ Während des gesamten Projekts war Anthony
-              reaktionsschnell, kooperativ und engagiert, um sicherzustellen,
-              dass jeder Aspekt der Website die Erwartungen des Teams erfüllte
-              und übertraf. ”, key: 5f3919d6
+              Original text: With their intrinsic value focus, fundamental
+              analysis and rigorous selection process, our funds serve as
+              stepping stones in growing wealth in an increasingly complex and
+              uncertain future., key: 1ba297b4
             label: Text
-            name: 5f3919d6
-            widget: text
-          - hint: 'Original text: Künstlerischer Direktor, key: -2b328cd3'
-            label: Text
-            name: '-2b328cd3'
-            widget: string
-          - hint: >-
-              Original text: “ In jeder Phase meiner Projekte für führende
-              internationale Unternehmen hat Anthony stets ein hohes Maß an
-              Kreativität, Professionalität und technischem Geschick an den Tag
-              gelegt und einen proaktiven Ansatz vom ersten Konzept bis zur
-              endgültigen Lieferung verfolgt. Die Zusammenarbeit mit Anthony war
-              ein großes Vergnügen, und ich freue mich auf zukünftige
-              Kooperationen. ”, key: 54881e90
-            label: Text
-            name: '54881e90'
-            widget: text
-          - hint: 'Original text: Tech-Investor/Vorsitzender, key: 33254073'
-            label: Text
-            name: '33254073'
-            widget: string
-          - hint: >-
-              Original text: “ Hervorragende Arbeit, vielen Dank für Ihr
-              Entgegenkommen - ich freue mich sehr auf die Zusammenarbeit bei
-              unserer neuen Website. Wir bleiben in Kontakt. ”, key: -29b752e4
-            label: Text
-            name: '-29b752e4'
-            widget: text
-          - hint: 'Original text: Direktorin, key: -6e23b137'
-            label: Text
-            name: '-6e23b137'
-            widget: string
-          - hint: >-
-              Original text: Ich löse Online-Markenidentität Probleme., key:
-              -4ae60bab
-            label: Text
-            name: '-4ae60bab'
-            widget: string
-          - hint: >-
-              Original text: Ich helfe Unternehmen, online zu glänzen. Ich bin
-              der Digital Designer, von dem Sie nicht wussten, dass Sie ihn
-              brauchen., key: -3a9d5424
-            label: Text
-            name: '-3a9d5424'
-            widget: text
-          - hint: 'Original text: Kontakt aufnehmen, key: 79876eb7'
-            label: Text
-            name: 79876eb7
-            widget: string
-          - hint: 'Original text: Portfolio ansehen, key: -2c595386'
-            label: Text
-            name: '-2c595386'
-            widget: string
-          - hint: >-
-              Original text: Welche Dienstleistungen bieten Sie an?, key:
-              24c0dd8d
-            label: Text
-            name: 24c0dd8d
-            widget: string
-          - hint: >-
-              Original text: Webdesign, Webentwicklung, Markenstrategie,
-              Logodesign, Corporate-Identity-Erstellung, Grafikdesign,
-              generative KI-Visualisierungen, Inhaltserstellung,
-              fortgeschrittene Webanalyse, Suchmaschinenoptimierung (SEO)., key:
-              -77ab42cb
-            label: Text
-            name: '-77ab42cb'
-            widget: text
-          - hint: 'Original text: Wie sieht Ihre Preisgestaltung aus?, key: -2688e835'
-            label: Text
-            name: '-2688e835'
-            widget: string
-          - hint: >-
-              Original text: Die Preise für meine Dienstleistungen richten sich
-              in der Regel nach dem Umfang und den Spezifikationen des Projekts.
-              Nach unserem ersten Gespräch erhalten Sie von mir ein umfassendes
-              Angebot, in dem die besprochenen Dienstleistungen und die damit
-              verbundenen Kosten aufgeführt sind., key: 2d82c728
-            label: Text
-            name: 2d82c728
-            widget: text
-          - hint: 'Original text: Wie sieht Ihr Prozess aus?, key: 43d41407'
-            label: Text
-            name: 43d41407
-            widget: string
-          - hint: >-
-              Original text: Mein Prozess beginnt mit einem ausführlichen
-              Gespräch, um Ihre Ziele und Anforderungen zu verstehen. Dann
-              erstelle ich Wireframes und Design-Mockups, die Sie genehmigen
-              müssen, bevor ich mit der Entwicklung fortfahre. Während des
-              gesamten Prozesses pflege ich eine offene Kommunikation, um
-              sicherzustellen, dass das Endprodukt mit Ihren Vorstellungen
-              übereinstimmt., key: 32cca26b
-            label: Text
-            name: 32cca26b
-            widget: text
-          - hint: 'Original text: Wie lange dauert es bis zum launch?, key: 79eeb6b3'
-            label: Text
-            name: 79eeb6b3
-            widget: string
-          - hint: >-
-              Original text: Der endgültige Zeitplan hängt von der Komplexität
-              des Projekts und den erforderlichen Funktionen ab. Nach
-              Besprechung Ihrer spezifischen Anforderungen kann ich Ihnen einen
-              detaillierten Zeitplan mit den verschiedenen Entwicklungsphasen
-              und einem voraussichtlichen Fertigstellungstermin vorlegen. Für
-              MVPs, Bereitstellung innerhalb von 24 Stunden, für andere Websites
-              innerhalb von 4 Wochen., key: 6b451fc
-            label: Text
-            name: 6b451fc
+            name: 1ba297b4
             widget: text
           - hint: >-
-              Original text: Technische Fragen, alles was Sie wissen müssen.,
-              key: 678ae81b
+              Original text: Preserve your future purchasing power by combining
+              inflation resistant exposure to well established trends in
+              precious metals mining and the digital economy., key: 78fc96b6
             label: Text
-            name: 678ae81b
-            widget: string
-          - hint: >-
-              Original text: Können Sie bei Domain, Hosting und E-Mail helfen?,
-              key: -26578b98
-            label: Text
-            name: '-26578b98'
-            widget: string
-          - hint: >-
-              Original text: Natürlich werde ich Sie bei jedem Schritt
-              unterstützen. Ich kann Sie durch den Prozess der
-              Domainregistrierung führen und Ihnen bei der Auswahl eines
-              geeigneten Hosting-Anbieters helfen. Bei Bedarf kann ich Ihnen
-              auch bei der Einrichtung und Konfiguration Ihrer Hosting-Umgebung
-              helfen., key: -d2a065b
-            label: Text
-            name: '-d2a065b'
+            name: 78fc96b6
             widget: text
-          - hint: 'Original text: Bieten Sie Wartung und Support an?, key: -3c8291e4'
+          - hint: 'Original text: Long US Equities, key: 3aecfa01'
             label: Text
-            name: '-3c8291e4'
+            name: 3aecfa01
             widget: string
           - hint: >-
-              Original text: Ja, ich biete bei Bedarf vorrangige Unterstützung
-              an. Ich biete laufende Wartungs- und Supportdienste an, um
-              sicherzustellen, dass Ihre Website aktuell und sicher bleibt. Dazu
-              gehören regelmäßige Aktualisierungen, Fehlersuche und die Behebung
-              von Problemen, die nach dem Start auftreten können., key:
-              -331fdcb5
+              Original text: Focusing on capturing the fundamental value of well
+              established trends within mining of physical metals and Bitcoin
+              ETF products, our flagship fund has generated returns of over 200%
+              year to date in 2024., key: -53901c0f
             label: Text
-            name: '-331fdcb5'
+            name: '-53901c0f'
             widget: text
-          - hint: >-
-              Original text: Bieten Sie Einblicke in SEO/Analytik?, key:
-              44f99627
+          - hint: 'Original text: Scarcity Fund, key: 3c0e42f9'
             label: Text
-            name: 44f99627
+            name: 3c0e42f9
             widget: string
-          - hint: >-
-              Original text: Ja, ich biete SEO und Analytik an. Ich integriere
-              SEO Best Practices in den Entwicklungsprozess, um sicherzustellen,
-              dass Ihre Website suchmaschinenfreundlich ist. Dazu gehören die
-              Optimierung der Seitengeschwindigkeit, die Verwendung
-              SEO-freundlicher URLs und die Implementierung anderer
-              On-Page-SEO-Elemente. Außerdem stelle ich eine breite Palette von
-              Tools zur Verfügung, die Ihnen helfen, durch Analysen Erkenntnisse
-              zu gewinnen., key: -19c55
+          - hint: "Original text: Building on the theme of inflation resistant exposure to physical assets, our upcoming Scarcity fund aims to accumulate a wide range of finite and limited products destined to always appreciate in value: land, physical gold, Bitcoin and fine wine to name a few.\_, key: 63e25234"
             label: Text
-            name: '-19c55'
+            name: '63e25234'
             widget: text
-          - hint: 'Original text: Noch eine Frage?, key: -5eeff6a9'
+          - hint: 'Original text: Direct Redemptions, key: -262e8e0f'
             label: Text
-            name: '-5eeff6a9'
+            name: '-262e8e0f'
+            widget: string
+          - hint: "Original text: Direct Redemptions: Convert your paper exposure to real assets - claim physical gold, move Bitcoin to cold storage, purchase cash CHF - we encourage direct asset ownership in all forms. \_, key: -2a4127c3"
+            label: Text
+            name: '-2a4127c3'
+            widget: text
+          - hint: "Original text: “An\_email saying you have gold\_is not the same as\_having gold”, key: c3dee31"
+            label: Text
+            name: c3dee31
+            widget: string
+          - hint: 'Original text: — Elon Musk, key: 3845900e'
+            label: Text
+            name: 3845900e
+            widget: string
+          - hint: 'Original text: — Future proof, key: 28a59153'
+            label: Text
+            name: 28a59153
+            widget: string
+          - hint: "Original text:  \_your investments, key: -1c4d2bed"
+            label: Text
+            name: '-1c4d2bed'
             widget: string
           - hint: >-
-              Original text: Kunden und Agenturen, mit denen ich gearbeitet
-              habe., key: 4f5931b5
+              Original text: Engage with our team of experts and early adopters
+              to discover the practical applications of blockchain technology,
+              from ETFs to proprietary on-chain infrastructure., key: -14962966
             label: Text
-            name: 4f5931b5
-            widget: string
-          - hint: >-
-              Original text: Jedes neue Projekt ist eine Chance, etwas Neues zu
-              lernen und zu wachsen., key: 271a2022
+            name: '-14962966'
+            widget: text
+          - hint: "Original text: Our advisory is comprised of committed blockchain entrepreneurs with a decade of first hand experience in digital assets, adding value at any level of complexity.\_, key: -6d43f2d5"
             label: Text
-            name: 271a2022
-            widget: string
-          - hint: 'Original text: DEUTSCHLAND, key: 523a9b03'
-            label: Text
-            name: 523a9b03
-            widget: string
-          - hint: 'Original text: SCHWEIZ, key: -62e6e389'
-            label: Text
-            name: '-62e6e389'
-            widget: string
-          - hint: 'Original text: 1961 St-Luc, Wallis, key: 782e1673'
-            label: Text
-            name: '782e1673'
-            widget: string
-          - hint: 'Original text: PHILIPPINIEN, key: -571290e1'
-            label: Text
-            name: '-571290e1'
-            widget: string
-          - hint: 'Original text: Geschichten, die begeistern, key: 43fba5f5'
-            label: Text
-            name: 43fba5f5
-            widget: string
-          - hint: 'Original text: Inhalt, der verbindet, key: -52bef6fa'
-            label: Text
-            name: '-52bef6fa'
-            widget: string
-          - hint: 'Original text: Kontakt, key: 43219700'
-            label: Text
-            name: '43219700'
-            widget: string
-          - hint: 'Original text: Impessum, key: -15dee94f'
-            label: Text
-            name: '-15dee94f'
-            widget: string
-          - hint: 'Original text: Datenschutz, key: -33c4befd'
-            label: Text
-            name: '-33c4befd'
-            widget: string
-          - hint: >-
-              Original text: Merci, je m'engage à vous répondre dans les plus
-              brefs délais., key: -1462b462
-            label: Text
-            name: '-1462b462'
-            widget: string
-          - hint: >-
-              Original text: Danke ! Ich werde Ihre Anfrage so schnell wie
-              möglich beantworten., key: -3b7d4f5e
-            label: Text
-            name: '-3b7d4f5e'
-            widget: string
-          - hint: 'Original text: Le seul Designer, key: -468bd165'
-            label: Text
-            name: '-468bd165'
-            widget: string
-          - hint: >-
-              Original text: Digital dont vous aurez réellement besoin., key:
-              -2e26b132
-            label: Text
-            name: '-2e26b132'
-            widget: string
-          - hint: >-
-              Original text: Der Designerdigital & Entwickler, den Sie wircklich
-              brauchen., key: -48240222
-            label: Text
-            name: '-48240222'
-            widget: string
-          - hint: >-
-              Original text: Der digitale Designer und Entwickler, den Sie
-              wirklich brauchen., key: -40c48625
-            label: Text
-            name: '-40c48625'
-            widget: string
-          - hint: >-
-              Original text: Ich stärke Ihr Unternehmen mit einem umfassenden
-              Webdesign und -entwicklung, ich kreiere Ihre moderne und
-              einzigartige Markenidentität., key: -5f1a6056
-            label: Text
-            name: '-5f1a6056'
+            name: '-6d43f2d5'
             widget: text
           - hint: >-
-              Original text: Ihre Online-Präsenz zusammen erstellen, key:
-              4fbb981e
+              Original text: Wether you discovered Bitcoin in 2013 or 2023, you
+              will find our advisory to be a competent source of experience for
+              making crucial decisions while investing, building, or trading
+              digital assets., key: 6c1d3423
             label: Text
-            name: 4fbb981e
+            name: 6c1d3423
+            widget: text
+          - hint: 'Original text: Investments, key: 4fb5cfe0'
+            label: Text
+            name: 4fb5cfe0
             widget: string
           - hint: >-
-              Original text: Webdesign, Markenidentität, Startup, LP,
-              E-Commerce, MVP, key: 9431f6a
+              Original text: We understand and respect the fundamental
+              narratives behind blockchain technology and seek to provide the
+              most genuine products to our clients. We also develop bespoke
+              investment products focused on self custody and unitary value
+              accumulation., key: 63d04cff
             label: Text
-            name: 9431f6a
+            name: 63d04cff
+            widget: text
+          - hint: 'Original text: Private Banking, key: -10d509b7'
+            label: Text
+            name: '-10d509b7'
             widget: string
           - hint: >-
-              Original text: Effektives Design zum fairen Preis — Website heute
-              erhalten., key: -53cf6063
+              Original text: From on/off ramp services, OTC, LTV lines of credit
+              to simple redemptions, we facilitate your banking relationships
+              and ensure your long term goals are accomplished via a variety of
+              asset preserving products aimed at securing your holdings for the
+              next generation., key: -49d031d7
             label: Text
-            name: '-53cf6063'
-            widget: string
-          - hint: >-
-              Original text: Konzentrieren Sie sich auf das, was Sie am besten
-              können, und überlassen Sie mir den Rest., key: 5fc554a1
-            label: Text
-            name: 5fc554a1
-            widget: string
-          - hint: >-
-              Original text: Je renforce votre entreprise avec un design et un
-              développement Web complet, je crée votre identité de marque
-              moderne et unique., key: -1b5da4b6
-            label: Text
-            name: '-1b5da4b6'
+            name: '-49d031d7'
             widget: text
           - hint: >-
-              Original text: Construisons votre présence en ligne., key:
-              -6d34c257
+              Original text: “Our favourite hodling period is forever.”, key:
+              -343f3595
             label: Text
-            name: '-6d34c257'
+            name: '-343f3595'
+            widget: string
+          - hint: 'Original text: — Warren Buffet, key: -cae8abd'
+            label: Text
+            name: '-cae8abd'
+            widget: string
+          - hint: 'Original text: Asset , key: 75755f50'
+            label: Text
+            name: 75755f50
+            widget: string
+          - hint: "Original text: Management\_, key: 6582389d"
+            label: Text
+            name: 6582389d
+            widget: string
+          - hint: 'Original text: (2), key: 9c5f'
+            label: Text
+            name: 9c5f
+            widget: string
+          - hint: 'Original text: Institutional , key: 5dd424bd'
+            label: Text
+            name: 5dd424bd
+            widget: string
+          - hint: 'Original text: Services , key: 6bdf1b62'
+            label: Text
+            name: 6bdf1b62
+            widget: string
+          - hint: 'Original text: Fund , key: 41145db'
+            label: Text
+            name: 41145db
+            widget: string
+          - hint: 'Original text: (1), key: 9c40'
+            label: Text
+            name: 9c40
+            widget: string
+          - hint: 'Original text: Digital , key: -c6d8'
+            label: Text
+            name: '-c6d8'
+            widget: string
+          - hint: 'Original text: Assets , key: 393694dd'
+            label: Text
+            name: 393694dd
+            widget: string
+          - hint: 'Original text: Asset, key: 3c9fad0'
+            label: Text
+            name: 3c9fad0
+            widget: string
+          - hint: 'Original text: Management, key: b885463'
+            label: Text
+            name: b885463
+            widget: string
+          - hint: 'Original text: 6 topics, key: 5289b84e'
+            label: Text
+            name: 5289b84e
+            widget: string
+          - hint: 'Original text: Get an edge, key: -5f8cfd1a'
+            label: Text
+            name: '-5f8cfd1a'
+            widget: string
+          - hint: 'Original text: Call us, key: -7c14e080'
+            label: Text
+            name: '-7c14e080'
+            widget: string
+          - hint: 'Original text: email us, key: 2d5d45a2'
+            label: Text
+            name: 2d5d45a2
+            widget: string
+          - hint: 'Original text: Find us, key: 305d2245'
+            label: Text
+            name: 305d2245
+            widget: string
+          - hint: 'Original text: 0, key: 30'
+            label: Text
+            name: '30'
+            widget: string
+          - hint: 'Original text: %, key: 25'
+            label: Text
+            name: '25'
+            widget: string
+          - hint: 'Original text: +, key: 2b'
+            label: Text
+            name: 2b
+            widget: string
+          - hint: 'Original text: Annual Fund Performance, key: -2be474aa'
+            label: Text
+            name: '-2be474aa'
+            widget: string
+          - hint: 'Original text: $1B, key: 8d55'
+            label: Text
+            name: 8d55
+            widget: string
+          - hint: 'Original text: Total AUM, key: 54f1439d'
+            label: Text
+            name: 54f1439d
             widget: string
           - hint: >-
-              Original text: Web design, Identité de marque, Startup, LP,
-              ecommerce, MVP, key: 45faaa3a
+              Original text: Years of Experience with Digital Assets, key:
+              -3d534b2
             label: Text
-            name: 45faaa3a
+            name: '-3d534b2'
+            widget: string
+          - hint: 'Original text: Obtained FINMA License, key: 257574c4'
+            label: Text
+            name: 257574c4
+            widget: string
+          - hint: 'Original text: $, key: 24'
+            label: Text
+            name: '24'
+            widget: string
+          - hint: 'Original text: M, key: 4d'
+            label: Text
+            name: 4d
+            widget: string
+          - hint: 'Original text: Average Account Size, key: -166be069'
+            label: Text
+            name: '-166be069'
+            widget: string
+          - hint: 'Original text: — Trusted, key: 441914cb'
+            label: Text
+            name: 441914cb
+            widget: string
+          - hint: 'Original text:  by many,, key: -75a4173c'
+            label: Text
+            name: '-75a4173c'
+            widget: string
+          - hint: 'Original text:  proven by numbers, key: -7c24e591'
+            label: Text
+            name: '-7c24e591'
+            widget: string
+          - hint: 'Original text: About us, key: 645f0031'
+            label: Text
+            name: 645f0031
+            widget: string
+          - hint: 'Original text: — Your trusted, key: -2b79bd4a'
+            label: Text
+            name: '-2b79bd4a'
+            widget: string
+          - hint: 'Original text:  partner, key: -331d8758'
+            label: Text
+            name: '-331d8758'
+            widget: string
+          - hint: 'Original text: in , key: 1979b'
+            label: Text
+            name: 1979b
+            widget: string
+          - hint: 'Original text: wealth management _, key: 6c88b555'
+            label: Text
+            name: 6c88b555
+            widget: string
+          - hint: 'Original text: — We believe, key: -2222aed2'
+            label: Text
+            name: '-2222aed2'
             widget: string
           - hint: >-
-              Original text: Prix compétitifs pour un design percutant - votre
-              site web dès aujourd'hui., key: 201bd77d
+              Original text:  in the power of transparency to build lasting
+              client relationships, key: -294fa0d3
             label: Text
-            name: 201bd77d
+            name: '-294fa0d3'
+            widget: string
+          - hint: 'Original text: Discover, key: 1422dc09'
+            label: Text
+            name: 1422dc09
             widget: string
           - hint: >-
-              Original text: Concentrez-vous sur ce que vous faites de mieux,
-              laissez-moi m'occuper du reste., key: a2aab74
+              Original text: We embody trust, transparency, flexibility, and
+              bespoke solutions to be your trusted wealth management partner,
+              guiding you to financial success every step of the way., key:
+              3a42146
             label: Text
-            name: a2aab74
-            widget: string
-          - hint: 'Original text: Glowing card, key: -2d9aa2c5'
-            label: Text
-            name: '-2d9aa2c5'
-            widget: string
-          - hint: >-
-              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              ullamcorper malesuada, key: 7d7349f0
-            label: Text
-            name: 7d7349f0
+            name: 3a42146
             widget: text
+          - hint: 'Original text: — Join us, key: 2d4fa128'
+            label: Text
+            name: 2d4fa128
+            widget: string
+          - hint: >-
+              Original text:  in shaping the global future of wealth management,
+              key: 65f8f859
+            label: Text
+            name: 65f8f859
+            widget: string
+          - hint: 'Original text: Join us, key: df13934'
+            label: Text
+            name: df13934
+            widget: string
+          - hint: >-
+              Original text: Silver Arrow Wealth Management is a Swiss licensed
+              independent asset management company, serving an international
+              clientele of ultra-high-net-worth individuals, families,
+              corporations and financial institutions. We have adopted the
+              ambassador model across different countries to foster synergies
+              between our ambassadors’ networks and our suite of services., key:
+              684a89d1
+            label: Text
+            name: 684a89d1
+            widget: text
+          - hint: >-
+              Original text: We seek high-caliber individuals and organizations
+              as new ambassadors. If this interests you, please get in touch via
+              bizdev@sawm.ch, key: -725642ba
+            label: Text
+            name: '-725642ba'
+            widget: text
+          - hint: 'Original text: Button Text, key: -8fb26a5'
+            label: Text
+            name: '-8fb26a5'
+            widget: string
+          - hint: >-
+              Original text: SilverArrow SA upholds the highest standards of
+              integrity, supported by a robust ecosystem and partnerships
+              granting access to experts, enabling us to deliver extensive
+              wealth management services., key: -482a1182
+            label: Text
+            name: '-482a1182'
+            widget: text
+          - hint: >-
+              Original text: We facilitate seamless client interactions with
+              banks, brokerages, and financial entities., key: 5121de1a
+            label: Text
+            name: 5121de1a
+            widget: string
+          - hint: >-
+              Original text: We offer diverse avenues of capital growth and
+              wealth preservation, key: -13ad6133
+            label: Text
+            name: '-13ad6133'
+            widget: string
+          - hint: 'Original text: — Acknowledging, key: c6992d'
+            label: Text
+            name: c6992d
+            widget: string
+          - hint: >-
+              Original text:  the specific demands of our clientele, we offer
+              state-of-the-art solutions for wealthy individuals, key: -25ea30f5
+            label: Text
+            name: '-25ea30f5'
+            widget: text
+          - hint: 'Original text: — You ask,, key: -5cdd5920'
+            label: Text
+            name: '-5cdd5920'
+            widget: string
+          - hint: 'Original text:  we answer, key: -4699e6d0'
+            label: Text
+            name: '-4699e6d0'
+            widget: string
+          - hint: 'Original text: Talk to us, key: -7d8e69f1'
+            label: Text
+            name: '-7d8e69f1'
+            widget: string
+          - hint: 'Original text:  —, key: 23f4'
+            label: Text
+            name: 23f4
+            widget: string
+          - hint: >-
+              Original text: Our team is happy to provide additional information
+              and support to ensure all your queries are answered., key:
+              6838e784
+            label: Text
+            name: '6838e784'
+            widget: text
+          - hint: 'Original text: FAQ, key: 10ef6'
+            label: Text
+            name: 10ef6
+            widget: string
+          - hint: >-
+              Original text: What does it mean to be FINMA regulated?, key:
+              -449c6334
+            label: Text
+            name: '-449c6334'
+            widget: string
+          - hint: >-
+              Original text: Being FINMA regulated means that we are supervised
+              by the Swiss Financial Market Supervisory Authority (FINMA),
+              ensuring we adhere to strict standards of transparency, stability,
+              and integrity. This regulation provides our clients with the
+              assurance that their investments are managed within a robust
+              regulatory framework., key: -221d2b27
+            label: Text
+            name: '-221d2b27'
+            widget: text
+          - hint: >-
+              Original text: FINMA regulation impacts our services by requiring
+              us to meet stringent compliance and risk management standards.
+              This means that our investment strategies, customer service, and
+              overall business operations are designed to prioritize client
+              security and financial well-being., key: 7516e7d7
+            label: Text
+            name: 7516e7d7
+            widget: text
+          - hint: >-
+              Original text: Why is FINMA regulation important for clients?,
+              key: 74abee83
+            label: Text
+            name: 74abee83
+            widget: string
+          - hint: >-
+              Original text: FINMA regulation is crucial as it guarantees that
+              we operate under rigorous guidelines designed to protect
+              investors. It also ensures that we maintain high levels of
+              financial stability and ethical business practices, providing our
+              clients with peace of mind and confidence in our services., key:
+              79d1633b
+            label: Text
+            name: 79d1633b
+            widget: text
+          - hint: >-
+              Original text: Who are your financial counterparties?, key:
+              -28b4b7f
+            label: Text
+            name: '-28b4b7f'
+            widget: string
+          - hint: >-
+              Original text: Our financial counterparties include a network of
+              highly reputable banks, investment firms, and financial
+              institutions. These partners are selected based on their financial
+              strength, reliability, and compliance with regulatory standards.,
+              key: 5af0b78d
+            label: Text
+            name: 5af0b78d
+            widget: text
+          - hint: >-
+              Original text: How do you choose your financial counterparties?,
+              key: 6649ddf6
+            label: Text
+            name: 6649ddf6
+            widget: string
+          - hint: >-
+              Original text: We choose our financial counterparties through a
+              rigorous selection process that evaluates their financial health,
+              regulatory compliance, market reputation, and the quality of
+              services they provide. This ensures that our clients benefit from
+              partnerships with trusted and stable financial institutions., key:
+              14c36caf
+            label: Text
+            name: 14c36caf
+            widget: text
+          - hint: 'Original text: — We value, key: 3611dc4b'
+            label: Text
+            name: 3611dc4b
+            widget: string
+          - hint: >-
+              Original text:  developing a close working relationship with our
+              clients, key: -730b80af
+            label: Text
+            name: '-730b80af'
+            widget: string
+          - hint: 'Original text: — Next Generation, key: -57d907a7'
+            label: Text
+            name: '-57d907a7'
+            widget: string
+          - hint: 'Original text:  Family Office, key: -3af33d28'
+            label: Text
+            name: '-3af33d28'
+            widget: string
+          - hint: 'Original text: for , key: 300c77'
+            label: Text
+            name: 300c77
+            widget: string
+          - hint: 'Original text: Digital Asset _, key: 6a8434e7'
+            label: Text
+            name: 6a8434e7
+            widget: string
+          - hint: >-
+              Original text: Technological progress meets Swiss precision -
+              Secure, Digital, and Future Proof., key: 3dc0e326
+            label: Text
+            name: 3dc0e326
+            widget: string
+          - hint: >-
+              Original text: We are experts in digital assets and traditional
+              finance, providing new alternatives and unique opportunities in
+              regulated frontier markets., key: 77e020e6
+            label: Text
+            name: 77e020e6
+            widget: text
+          - hint: 'Original text: Investment Philosophy, key: 2324fede'
+            label: Text
+            name: 2324fede
+            widget: string
+          - hint: >-
+              Original text: We believe technology to be the primary driver of
+              change in the world, and position our business at the forefront of
+              digital innovation. We regard simplicity and elegance in financial
+              markets as desirable traits, and deliver a clear understanding of
+              new and complex investments., key: -313800ff
+            label: Text
+            name: '-313800ff'
+            widget: text
+          - hint: "Original text: We understand modern economic realities and measure capital preservation in purchasing power.\_, key: -41dfe6c5"
+            label: Text
+            name: '-41dfe6c5'
+            widget: text
+          - hint: >-
+              Original text: We believe in risk, and either invest with
+              conviction or safeguard capital for future opportunities., key:
+              -21d51c3d
+            label: Text
+            name: '-21d51c3d'
+            widget: text
+          - hint: 'Original text: Technology Focused, key: -1646cb9d'
+            label: Text
+            name: '-1646cb9d'
+            widget: string
+          - hint: >-
+              Original text: Our competitive advantage is our unique knowledge
+              of the digital economy, drawing on the decades of experience of
+              our team members and partners., key: -610bf648
+            label: Text
+            name: '-610bf648'
+            widget: text
+          - hint: "Original text: We conduct deep research into fintech and blockchain applications, resulting in the development of unique financial products and services.\_, key: -2b86eb22"
+            label: Text
+            name: '-2b86eb22'
+            widget: text
+          - hint: 'Original text: Experienced Team, key: 22a7aac3'
+            label: Text
+            name: 22a7aac3
+            widget: string
+          - hint: >-
+              Original text: Our team is comprised of genuine innovators and
+              entrepreneurs with lifelong commitments to their fields - ranging
+              from private banking to the blockchain industry., key: 22b0b4bf
+            label: Text
+            name: 22b0b4bf
+            widget: text
+          - hint: >-
+              Original text: Operating in real time, we we act with the same
+              sense of urgency as our partners, using modern communication and
+              often operating outside regular business hours., key: -61c33fd8
+            label: Text
+            name: '-61c33fd8'
+            widget: text
+          - hint: >-
+              Original text: We apply our skills with enthusiasm and have a
+              business culture focused on intelligence, empathy, meritocracy,
+              and international collaboration., key: 1c544dde
+            label: Text
+            name: 1c544dde
+            widget: text
+          - hint: 'Original text: Licences?, key: -38b49fe3'
+            label: Text
+            name: '-38b49fe3'
+            widget: string
+          - hint: >-
+              Original text: We are a Geneva based FINMA licensed Swiss asset
+              manager., key: -410c0b68
+            label: Text
+            name: '-410c0b68'
+            widget: string
+          - hint: 'Original text: Access our weekly publications, key: -39b8646a'
+            label: Text
+            name: '-39b8646a'
+            widget: string
+          - hint: "Original text: Our Publication section compiles reliable information by aggregating professional reports from curated sources\_, key: -19efd6e"
+            label: Text
+            name: '-19efd6e'
+            widget: text
+          - hint: 'Original text: Access now, key: 32a8763a'
+            label: Text
+            name: 32a8763a
+            widget: string
+          - hint: 'Original text: feat, key: 2fe532'
+            label: Text
+            name: 2fe532
+            widget: string
+          - hint: >-
+              Original text: This is some text inside of a div block., key:
+              7635fb4f
+            label: Text
+            name: 7635fb4f
+            widget: string
+          - hint: 'Original text: LOCKED, key: -79d6d8f6'
+            label: Text
+            name: '-79d6d8f6'
+            widget: string
+          - hint: 'Original text: Download PDF, key: 4bce595a'
+            label: Text
+            name: 4bce595a
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: >-
+              Original text: “Innovation distinguishes between a leader and a
+              follower.”, key: 600b95e9
+            label: Text
+            name: 600b95e9
+            widget: string
+          - hint: 'Original text: — Steve Jobs, key: -25d527b1'
+            label: Text
+            name: '-25d527b1'
+            widget: string
+          - hint: 'Original text: — Stay updated, key: -48852160'
+            label: Text
+            name: '-48852160'
+            widget: string
+          - hint: 'Original text:  or stay behind, key: 7c479244'
+            label: Text
+            name: 7c479244
+            widget: string
+          - hint: 'Original text: Stay updated, key: -776d91ec'
+            label: Text
+            name: '-776d91ec'
+            widget: string
+          - hint: >-
+              Original text: In the fast-paced world of finance, staying
+              informed is the key to turning today's insights into tomorrow's
+              gains., key: -4c2af897
+            label: Text
+            name: '-4c2af897'
+            widget: text
+          - hint: >-
+              Original text: In the ever-changing world of finance, staying
+              ahead means turning knowledge into opportunity before the market
+              moves., key: 7a3482a7
+            label: Text
+            name: 7a3482a7
+            widget: text
+          - hint: 'Original text: Publications, key: 4183f7e7'
+            label: Text
+            name: 4183f7e7
+            widget: string
+          - hint: 'Original text: locked, key: -4169ccf6'
+            label: Text
+            name: '-4169ccf6'
+            widget: string
+          - hint: 'Original text: Open the PDF, key: 45d10ced'
+            label: Text
+            name: 45d10ced
+            widget: string
+          - hint: >-
+              Original text: “In finance, the only constant is change—adapt, or
+              get left behind.”, key: -17270c63
+            label: Text
+            name: '-17270c63'
+            widget: string
+          - hint: 'Original text: — A wise man, key: -3fb25397'
+            label: Text
+            name: '-3fb25397'
+            widget: string
+          - hint: 'Original text: — Success, key: 134c3fd7'
+            label: Text
+            name: 134c3fd7
+            widget: string
+          - hint: >-
+              Original text:  in finance belongs to those who adapt quickly,
+              key: -538b0751
+            label: Text
+            name: '-538b0751'
+            widget: string
       - label: Links
         name: links
         file: cms/_data/links.json
@@ -3178,103 +1570,123 @@ collections:
             name: title
             widget: hidden
             default: Links
-          - hint: 'Original link: /, key: 2f'
-            label: Link
-            name: 2f
-            widget: string
-          - hint: 'Original link: /portfolio/, key: 6ec07556'
-            label: Link
-            name: 6ec07556
-            widget: string
-          - hint: 'Original link: #faq, key: 117413'
-            label: Link
-            name: '117413'
-            widget: string
-          - hint: 'Original link: /fr/, key: 16ea54'
-            label: Link
-            name: 16ea54
-            widget: string
-          - hint: 'Original link: /de/, key: 16e13f'
-            label: Link
-            name: 16e13f
-            widget: string
-          - hint: >-
-              Original link:
-              https://calendly.com/anthonysalamin/quick-discovery-call, key:
-              3e633501
-            label: Link
-            name: '3e633501'
-            widget: string
-          - hint: 'Original link: /contact/, key: 16bdc13e'
-            label: Link
-            name: 16bdc13e
-            widget: string
-          - hint: 'Original link: #targetAnchor, key: 5c9ed349'
-            label: Link
-            name: 5c9ed349
-            widget: string
-          - hint: >-
-              Original link: mailto:hello@anthonysalamin.ch?subject=Contact,
-              key: 6523b8f7
-            label: Link
-            name: 6523b8f7
-            widget: string
-          - hint: >-
-              Original link: https://www.linkedin.com/in/anthonysalamin/, key:
-              663eed27
-            label: Link
-            name: 663eed27
-            widget: string
-          - hint: 'Original link: /legal/imprint/, key: -6bce3a35'
-            label: Link
-            name: '-6bce3a35'
-            widget: string
-          - hint: 'Original link: /legal/privacy-policy/, key: 78d8cfd3'
-            label: Link
-            name: 78d8cfd3
-            widget: string
           - hint: 'Original link: #, key: 23'
             label: Link
             name: '23'
             widget: string
-          - hint: 'Original link: #gallery, key: 281599cf'
+          - hint: >-
+              Original link:
+              mailto:info@sawm.ch?subject=Wealth%20Management%20Models, key:
+              -3dc61c01
             label: Link
-            name: 281599cf
+            name: '-3dc61c01'
             widget: string
-          - hint: 'Original link: #film, key: 21d2c27'
+          - hint: >-
+              Original link: mailto:info@sawm.ch?subject=Strategic%20Planning,
+              key: 6d0994eb
             label: Link
-            name: 21d2c27
+            name: 6d0994eb
             widget: string
           - hint: >-
               Original link:
-              mailto:hello@anthonysalamin.ch?subject=Contact%20alternative, key:
-              332ecf61
+              mailto:info@sawm.ch?subject=Digital%20Assets%20Advisory, key:
+              727c3bc3
             label: Link
-            name: 332ecf61
+            name: 727c3bc3
             widget: string
-          - hint: 'Original link: /fr/projets/, key: -7d8551c4'
+          - hint: >-
+              Original link:
+              mailto:info@sawm.ch?subject=Strategic%20Prime%20Funds, key:
+              -3e1b2e64
             label: Link
-            name: '-7d8551c4'
+            name: '-3e1b2e64'
+            widget: string
+          - hint: >-
+              Original link: mailto:info@sawm.ch?subject=Treasury%20Management,
+              key: -7eb99368
+            label: Link
+            name: '-7eb99368'
+            widget: string
+          - hint: >-
+              Original link:
+              mailto:info@sawm.ch?subject=Trade%20Finance%20Advisory%20%26%20Funding,
+              key: 28afe8ec
+            label: Link
+            name: 28afe8ec
+            widget: string
+          - hint: 'Original link: /services/asset-management/, key: -5b0dcf13'
+            label: Link
+            name: '-5b0dcf13'
+            widget: string
+          - hint: 'Original link: /services/digital-assets/, key: -43bd562b'
+            label: Link
+            name: '-43bd562b'
+            widget: string
+          - hint: 'Original link: /services/funds/, key: -3b99659d'
+            label: Link
+            name: '-3b99659d'
+            widget: string
+          - hint: 'Original link: /services/networking/, key: -4ab625c7'
+            label: Link
+            name: '-4ab625c7'
+            widget: string
+          - hint: 'Original link: mailto:info@sawm.ch?subject=contact, key: 17a761b5'
+            label: Link
+            name: 17a761b5
+            widget: string
+          - hint: 'Original link: tel:+41223191919, key: 6851ce42'
+            label: Link
+            name: 6851ce42
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.google.com/maps/place/Bd+du+Th%C3%A9%C3%A2tre+2,+1204+Gen%C3%A8ve,+Switzerland/@46.2025498,6.1387794,17z/data=!3m1!4b1!4m6!3m5!1s0x478c652a029fa33d:0x6816afee8c47ed69!8m2!3d46.2025461!4d6.1413543!16s%2Fg%2F11c1x386tt?entry=ttu,
+              key: 70df12fd
+            label: Link
+            name: 70df12fd
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /#services, key: 710c0232'
+            label: Link
+            name: 710c0232
+            widget: string
+          - hint: 'Original link: /about/, key: 61642f31'
+            label: Link
+            name: 61642f31
+            widget: string
+          - hint: 'Original link: /partnering/, key: -5c40063a'
+            label: Link
+            name: '-5c40063a'
+            widget: string
+          - hint: 'Original link: /publications/, key: 3713d979'
+            label: Link
+            name: 3713d979
+            widget: string
+          - hint: >-
+              Original link:
+              /assets/documents/best-execution-policy-for-silver-arrow-sa.pdf,
+              key: -2ff9dedf
+            label: Link
+            name: '-2ff9dedf'
+            widget: string
+          - hint: 'Original link: https://anthonysalamin.ch, key: -d4fd732'
+            label: Link
+            name: '-d4fd732'
             widget: string
           - hint: 'Original link: #services, key: -686fc27f'
             label: Link
             name: '-686fc27f'
             widget: string
-          - hint: 'Original link: /fr/contact/, key: -63d1499d'
+          - hint: 'Original link: mailto:info@sawm.ch?subject=Contact, key: 7adff995'
             label: Link
-            name: '-63d1499d'
+            name: 7adff995
             widget: string
-          - hint: 'Original link: /de/projekte/, key: 2dd6addc'
+          - hint: 'Original link: #history, key: 6b090711'
             label: Link
-            name: 2dd6addc
-            widget: string
-          - hint: 'Original link: #leistungen, key: 149e70a9'
-            label: Link
-            name: 149e70a9
-            widget: string
-          - hint: 'Original link: /de/kontakt/, key: 49b4174e'
-            label: Link
-            name: 49b4174e
+            name: 6b090711
             widget: string
       - label: Images
         name: images
@@ -3285,7 +1697,7 @@ collections:
             widget: hidden
             default: Images
           - label: Image
-            name: 7fdc2565
+            name: 37f9da07
             widget: object
             fields:
               - name: url
@@ -3298,7 +1710,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: i46796a01
+            name: 2a4dba0e
             widget: object
             fields:
               - name: url
@@ -3311,7 +1723,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: c8a5c77
+            name: e87cbd3
             widget: object
             fields:
               - name: url
@@ -3324,7 +1736,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 64c32a1
+            name: i2aeb8b72
             widget: object
             fields:
               - name: url
@@ -3337,7 +1749,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 22b4fd6
+            name: '7e087946'
             widget: object
             fields:
               - name: url
@@ -3350,7 +1762,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-3aa60452'
+            name: i6f78889b
             widget: object
             fields:
               - name: url
@@ -3363,7 +1775,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-268bce30'
+            name: 10c7634d
             widget: object
             fields:
               - name: url
@@ -3376,7 +1788,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 2a242f13
+            name: 3f900a67
             widget: object
             fields:
               - name: url
@@ -3389,7 +1801,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: f0f282a
+            name: '-bd765f9'
             widget: object
             fields:
               - name: url
@@ -3402,7 +1814,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 58a8a50a
+            name: '-43eab464'
             widget: object
             fields:
               - name: url
@@ -3415,7 +1827,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '-266f9f2e'
+            name: '-63932845'
             widget: object
             fields:
               - name: url
@@ -3428,7 +1840,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 24bba308
+            name: 4cd8177f
             widget: object
             fields:
               - name: url
@@ -3441,7 +1853,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 23abcbe3
+            name: '-6f78889b'
             widget: object
             fields:
               - name: url
@@ -3454,7 +1866,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: '0'
+            name: '-50e7a06b'
             widget: object
             fields:
               - name: url
@@ -3467,7 +1879,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 1117e5d3
+            name: '-50d330ae'
             widget: object
             fields:
               - name: url
@@ -3480,202 +1892,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: 13484f20
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 6615ca4d
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 5fc3bff6
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-251b202'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-6e662628'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-7bf7e289'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-178a483a'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 7714cfce
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 1cdf1f78
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-59244ca2'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-3038975b'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 1797de4e
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-abdda85'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 3f058655
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 45efbfe
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 1b52a5a6
+            name: '-33baf72d'
             widget: object
             fields:
               - name: url
